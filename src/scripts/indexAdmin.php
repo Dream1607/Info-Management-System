@@ -1,9 +1,23 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <head>
 	<style type="text/css">
+		b{
+			position:fixed;
+			background-color:black;
+			border:0px;
+			left:2%;
+			top:2%;
+			color:#C5CBCD;
+			font-family:KaiTi;
+			font-size:15px;
+			font-weight:700;
+		}
 		#TransDiv{
-				position:absolute;
+				position:fixed;
 				width:100%;
 				top:0px;
 				left:0px;
@@ -12,11 +26,11 @@
 			}
 			
 		#LogInDiv{
-					position:absolute;
-					background-color: black;
+					position:fixed;
+					background-color:black;
 					border:0px;
-					right:5px;
-					bottom:5px;
+					right:1%;
+					top:1%;
 					color:#C5CBCD;
 					font-family:KaiTi;
 					font-size:15px;
@@ -220,3 +234,9 @@
 	</div>
 </body>
 </html>
+<?php
+	if(isset($_SESSION["info"]))
+	{
+		echo "<b>$_SESSION[info]你好!</b>";
+	}
+?>

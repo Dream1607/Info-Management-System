@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <head>
@@ -58,6 +61,11 @@
 
 		Config::loadCustom('/etc/Info/config.ini');
 
+		if(isset($_SESSION["info"]))
+		{
+			echo "<script>location='/scripts/indexAdmin.php'</script>";
+		}
+
 		if(isset($_POST["submit"]))
 		{
 			 $username = $_POST["username"];
@@ -71,6 +79,7 @@
 			 	{
 			 		 if($password === $account['password'] && $account['status'] === 'default')
 			 		 {
+			 		 	$_SESSION['info'] = "信息管理员";
 			 		 	echo "<script>location='/scripts/indexAdmin.php'</script>";
 			 		 }
 			 	}

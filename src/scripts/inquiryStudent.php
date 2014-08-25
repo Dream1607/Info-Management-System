@@ -1,3 +1,13 @@
+<?php
+	session_start();
+	if(!isset($_SESSION["info"]))
+	{
+		echo "<script language=\"JavaScript\">\r\n"; 
+		echo "alert(\"您尚未登录！\");\r\n";
+		echo "location='/scripts/loginManager.php'";
+		echo "</script>"; 
+	}
+?>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <head>
@@ -8,6 +18,16 @@
 			text-align:center;
 			border:3px solid;
 			border-color:#005AB5;
+		}
+		#info{
+			position:fixed;
+			border:0px;
+			left:2%;
+			top:2%;
+			color:black;
+			font-family:KaiTi;
+			font-size:15px;
+			font-weight:700;
 		}
 	</style>
 </head>
@@ -36,3 +56,9 @@
 	
 </body>
 </html>
+<?php
+	if(isset($_SESSION["info"]))
+	{
+		echo "<b id='info'>$_SESSION[info]</b>";
+	}
+?>

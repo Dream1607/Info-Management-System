@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <head>
@@ -18,6 +21,14 @@
 			font-family:KaiTi;
 			font-size:20px;
 			font-weight:700;
+		}
+		#info{
+			position:fixed;
+			border:0px;
+			left:2%;
+			top:2%;
+			color:black;
+			font-size:15px;
 		}
 		input{
 			height:30px;
@@ -129,3 +140,9 @@
 	?>
 </body>
 </html>
+<?php
+	if(isset($_SESSION["info"]))
+	{
+		echo "<b id='info'>$_SESSION[info]</b>";
+	}
+?>

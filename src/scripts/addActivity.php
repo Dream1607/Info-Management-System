@@ -1,3 +1,13 @@
+<?php
+	session_start();
+	if(!isset($_SESSION["info"]))
+	{
+		echo "<script language=\"JavaScript\">\r\n"; 
+		echo "alert(\"您尚未登录！\");\r\n";
+		echo "location='/scripts/loginManager.php'";
+		echo "</script>"; 
+	}
+?>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <head>
@@ -11,6 +21,14 @@
 			font-family:KaiTi;
 			font-size:20px;
 			font-weight:700;
+		}
+		#info{
+			position:fixed;
+			border:0px;
+			left:2%;
+			top:2%;
+			color:black;
+			font-size:15px;
 		}
 		input{
 			height:23.5px;
@@ -102,7 +120,7 @@
 		   <option value="研究生会">研究生会</option>
 		</select><br /><br/>
 	    活动名称: <input type="text" id="name" name="name"><br /><br/>
-	    活动日期:  <input type="text" id="date" name="date"><br /><br/>
+	    活动日期:  <input type="date" id="date" name="date"><br /><br/>
 	    活动地点:  <input type="text" id="place" name="place"><br /><br/>
 	    录入人员:  <input type="text" id="staff" name="staff"><br /><br/>
 	    
@@ -115,15 +133,37 @@
 
 		Config::loadCustom('/etc/Info/config.ini');
     	
+    	date_default_timezone_set("PRC");
+
 		if(isset($_POST["submit"]))
 		{
 			 $activityData = array();
-			 $activityData[] = $_POST["type"];
-			 $activityData[] = $_POST["department"];
-			 $activityData[] = $_POST["name"];
-			 $activityData[] = $_POST["date"];
-			 $activityData[] = $_POST["place"];
-			 $activityData[] = $_POST["staff"];
+			
+			//sanitize input
+			if(preg_match("/^[\x{4e00}-\x{9fa5}]+$/u",$_POST["type"])){
+				$activityData[] = $_POST["type"];
+			}else die("Error: Type");
+			
+			if(preg_match("/^[\x{4e00}-\x{9fa5}]+$/u",$_POST["department"])){
+				$activityData[] = $_POST["department"];
+			}else die("Error: Department");
+			
+			if(preg_match("/^[\x{4e00}-\x{9fa5}A-Za-z0-9._-]+$/u",$_POST["name"])){
+				$activityData[] = $_POST["name"];
+			}else die("Error: Name");
+			 
+			if(DATE('Y-m-d',strtotime($_POST["date"])) == $_POST["date"]){
+				$activityData[] = $_POST["date"];
+			}else die("Error: Date");
+			 
+			if(preg_match("/^[\x{4e00}-\x{9fa5}A-Za-z0-9._-]+$/u",$_POST["place"])){
+				$activityData[] = $_POST["place"];
+			}else die("Error: Place");
+			 
+			if(preg_match("/^[\x{4e00}-\x{9fa5}A-Za-z0-9._-]+$/u",$_POST["staff"])){
+				$activityData[] = $_POST["staff"];
+			}else die("Error: Staff");
+			
 
 			 $result = insert($activityData, array(	 'type',
 						 							 'department',
@@ -149,3 +189,9 @@
 	?>
 </body>
 </html>
+<?php
+	if(isset($_SESSION["info"]))
+	{
+		echo "<b id='info'>$_SESSION[info]</b>";
+	}
+?>

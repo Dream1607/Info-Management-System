@@ -1,3 +1,13 @@
+<?php
+	session_start();
+	if(!isset($_SESSION["info"]))
+	{
+		echo "<script language=\"JavaScript\">\r\n"; 
+		echo "alert(\"您尚未登录！\");\r\n";
+		echo "location='/scripts/loginManager.php'";
+		echo "</script>"; 
+	}
+?>
 <!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <head>
@@ -5,6 +15,16 @@
 		form{
 			font-family:KaiTi;
 			font-size:20px;
+			font-weight:700;
+		}
+		#info{
+			position:fixed;
+			border:0px;
+			left:2%;
+			top:2%;
+			color:black;
+			font-family:KaiTi;
+			font-size:15px;
 			font-weight:700;
 		}
 		input{
@@ -29,10 +49,10 @@
 			border:2px solid white;
 			background-color:white;
 		}
-		#login{
+		#signup{
 			width:5%;
 		}
-		#login:hover{
+		#signup:hover{
 			width:5%;
 		}
 	</style>
@@ -47,7 +67,7 @@
 		<br /><br />
 		密码：<input type="password" name="password"/>
 		<br /><br /><br /><br />
-	    <input id="login" type="submit" name="submit" value="添加" />
+	    <input id="signup" type="submit" name="submit" value="添加" />
 	    <br />
 	</form>
 
@@ -97,3 +117,9 @@
 	?> 
 </body>
 </html>
+<?php
+	if(isset($_SESSION["info"]))
+	{
+		echo "<b id='info'>$_SESSION[info]</b>";
+	}
+?>
