@@ -79,7 +79,7 @@
 			 	{
 			 		 if($password === $account['password'] && $account['status'] === 'default')
 			 		 {
-			 		 	$_SESSION['info'] = "信息管理员";
+			 		 	$_SESSION['info'] = $username;
 			 		 	echo "<script>location='/scripts/indexAdmin.php'</script>";
 			 		 }
 			 	}

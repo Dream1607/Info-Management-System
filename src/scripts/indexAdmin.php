@@ -15,6 +15,17 @@
 			font-family:KaiTi;
 			font-size:15px;
 			font-weight:700;
+		}	
+		#logOut{
+				position:fixed;
+				background-color:black;
+				border:0px;
+				right:10%;
+				top:1%;
+				color:#C5CBCD;
+				font-family:KaiTi;
+				font-size:15px;
+				font-weight:700;
 		}
 		#TransDiv{
 				position:fixed;
@@ -238,5 +249,10 @@
 	if(isset($_SESSION["info"]))
 	{
 		echo "<b>$_SESSION[info]你好!</b>";
+		echo '<div id="logOutDiv">
+				<form action="/index.php" method="post">
+					<input id="logOut" type="submit" name="submit" value="注销登录" />
+				</form>	
+			</div>';
 	}
 ?>

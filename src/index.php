@@ -1,5 +1,25 @@
 <?php
 	session_start();
+	if(isset($_POST["submit"]))
+	{
+		unset($_SESSION["info"]);
+	}
+	if(!isset($_SESSION["info"]))
+	{
+		echo '<div id="TransDiv">
+				<form action="/scripts/loginManager.php">
+					<input id="LogInDiv" type="submit" name="submit" value="管理员登录" />
+				</form>	
+			</div>';
+	}
+	else
+	{
+		echo '<div id="TransDiv">
+				<form action="/scripts/loginManager.php">
+					<input id="LogInDiv" type="submit" name="submit" value="进入管理员界面" />
+				</form>	
+			</div>';
+	}
 ?>
 <!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -116,14 +136,8 @@
 	</style>
 </head>
 
-<body> 
-
-	<div id="TransDiv">
-		<form action="/scripts/loginManager.php">
-			<input id="LogInDiv" type="submit" name="submit" value="管理员登录" />
-		</form>	
-	</div>
-
+<body>
+	
 	<div id="TitleDiv">
 
 		<img id="TitleImage" src="pic/titlePic.png" width="1180" align="center"></img>

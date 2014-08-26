@@ -7,6 +7,13 @@
 		echo "location='/scripts/loginManager.php'";
 		echo "</script>"; 
 	}
+	if($_SESSION["info"] != 'info')
+	{
+		echo "<script language=\"JavaScript\">\r\n"; 
+		echo "alert(\"对不起，您没有添加管理员的权限！\");\r\n";
+		echo "location='/scripts/indexAdmin.php'";
+		echo "</script>"; 
+	}
 ?>
 <!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
