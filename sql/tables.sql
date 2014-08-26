@@ -38,3 +38,10 @@ CREATE TABLE IF NOT EXISTS `Account` (
   `status` enum('default','deleted') NOT NULL DEFAULT 'default',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `Account_Activity` (
+  `username` varchar(255) NOT NULL,
+  `activityid` int(11) NOT NULL,
+  `status` enum('default','deleted') NOT NULL DEFAULT 'default',
+  PRIMARY KEY (`username`,`activityid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

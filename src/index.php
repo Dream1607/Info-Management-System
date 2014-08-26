@@ -3,22 +3,7 @@
 	if(isset($_POST["submit"]))
 	{
 		unset($_SESSION["info"]);
-	}
-	if(!isset($_SESSION["info"]))
-	{
-		echo '<div id="TransDiv">
-				<form action="/scripts/loginManager.php">
-					<input id="LogInDiv" type="submit" name="submit" value="管理员登录" />
-				</form>	
-			</div>';
-	}
-	else
-	{
-		echo '<div id="TransDiv">
-				<form action="/scripts/loginManager.php">
-					<input id="LogInDiv" type="submit" name="submit" value="进入管理员界面" />
-				</form>	
-			</div>';
+		header("Location: /index.php");
 	}
 ?>
 <!DOCTYPE html>
@@ -157,6 +142,22 @@
 </body>
 </html>
 <?php
+	if(!isset($_SESSION["info"]))
+	{
+		echo '<div id="TransDiv">
+				<form action="/scripts/loginManager.php">
+					<input id="LogInDiv" type="submit" name="submit" value="管理员登录" />
+				</form>	
+			</div>';
+	}
+	else
+	{
+		echo '<div id="TransDiv">
+				<form action="/scripts/loginManager.php">
+					<input id="LogInDiv" type="submit" name="submit" value="进入管理员界面" />
+				</form>	
+			</div>';
+	}
 	if(isset($_SESSION["info"]))
 	{
 		echo "<b>$_SESSION[info]你好!</b>";

@@ -7,6 +7,13 @@
 		echo "location='/scripts/loginManager.php'";
 		echo "</script>"; 
 	}
+	if($_SESSION["info"] == "info")
+	{
+		echo "<script language=\"JavaScript\">\r\n"; 
+		echo "alert(\"您没有添加活动的权限!\");\r\n";
+		echo "location='/scripts/indexAdmin.php'";
+		echo "</script>"; 
+	}
 ?>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -165,13 +172,24 @@
 			}else die("Error: Staff");
 			
 
-			 $result = insert($activityData, array(	 'type',
+			 $result1 = insert($activityData, array( 'type',
 						 							 'department',
 						 							 'name',
 						 							 'date',
 						 							 'place',
 						 							 'staff'), 'Activity');
-			 if($result)
+
+			 $query = "SELECT id FROM Activity ORDER BY id DESC";
+
+			 $activityId = getOneNumber($query);
+
+			 $accountActivityData = array();
+			 $accountActivityData[] = $_SESSION["info"];
+			 $accountActivityData[] = $activityId;
+
+			 $result2 = insert($accountActivityData, array(	'accountid',
+						 							 		'activityid'), 'Account_Activity');
+			 if($result1 && $result2)
 			 {
 			 	 echo "<script language=\"JavaScript\">\r\n"; 
 				 echo " alert(\"添加成功！\");\r\n"; 
