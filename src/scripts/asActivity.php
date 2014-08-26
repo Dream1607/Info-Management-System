@@ -93,6 +93,7 @@
 	<form id="data" name="data" action="" method="post">
 		活动类型:
 		<select width="200" id="type" name="type">
+		   <option value="all">不限制</option>
 		   <option value="体育竞技类">体育竞技类</option>
 		   <option value="文化艺术类">文化艺术类</option>
 		   <option value="科技创新类">科技创新类</option>
@@ -105,6 +106,7 @@
 		</select><br /><br/>
 	    主办部门:
 		<select width="200" id="department" name="department">
+		   <option value="all">不限制</option>
 		   <option value="体育部">体育部</option>
 		   <option value="文化部">文化部</option>
 		   <option value="外联部">外联部</option>
@@ -122,9 +124,6 @@
 		   <option value="研究生会">研究生会</option>
 		</select><br /><br/>
 	    活动名称: <input type="text" id="name" name="name"><br /><br/>
-	    活动日期:  <input type="text" id="date" name="date"><br /><br/>
-	    活动地点:  <input type="text" id="place" name="place"><br /><br/>
-	    录入人员:  <input type="text" id="staff" name="staff"><br /><br/>
 	    <input id="checkConfirm" type="submit" name="submit" value="确认查询"/>
 	</form>
 	<br />
@@ -140,12 +139,9 @@
 			 $type = $_POST["type"];
 			 $department = $_POST["department"];
 			 $name = $_POST["name"];
-			 $date = $_POST["date"];
-			 $place = $_POST["place"];
-			 $staff = $_POST["staff"];
 			 
 			 $query = "SELECT 
-			 					Activity_Student.activityid,
+			 					Activity_Student.activity_id,
 			 					Activity.name AS activity_name,
 			 					Activity.status AS activity_status,
 			 					Student.id,	 				  	
@@ -154,15 +150,18 @@
 			 				  	Student.major,
 			 				  	Student.grade,	 
 			 				  	Student.class,	 
-			 				  	Student.status AS student_status	 	 
+			 				  	Student.status AS student_status,
+			 				  	Activity_Student.note	 	 
 			 			FROM 
 			 					Activity_Student
 			 			LEFT JOIN 
-			 					Activity ON Activity_Student.activityid = Activity.id
+			 					Activity ON Activity_Student.activity_id = Activity.id
 			 			LEFT JOIN
-			 					Student ON Activity_Student.studentid = Student.id
+			 					Student ON Activity_Student.student_id = Student.id
 			 			WHERE 
-			 					IF ('$type' = '', 0 = 0, Activity.type = '$type')";
+			 					IF ('$type' = 'all', 0 = 0, Activity.type = '$type')
+			 				AND IF ('$department' = 'all', 0 = 0, Activity.department = '$department')
+			 				AND IF ('$name' = '', 0 = 0, Activity.name = '$name')";
 
 			 $checkAsActivityData = getSql( $query );
 
@@ -175,7 +174,8 @@
 													'专业',
 													'年级',
 													'班级',
-													'学生状态'),"border='1' align='center' width='888'");
+													'学生状态',
+													'备注'),"border='1' align='center' width='888'");
 
 		} 
 	?>

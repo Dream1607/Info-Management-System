@@ -109,14 +109,15 @@
 			 if($result)
 			 {
 			 	 echo "<script language=\"JavaScript\">\r\n"; 
-				 echo " alert(\"添加成功！\");\r\n"; 
+				 echo " alert(\"添加成功！\");\r\n";
+				 echo "location='/scripts/indexAdmin.php'";
 				 echo "</script>"; 
 				 exit;	
 			 }
 			 else
 			 {
 			 	 echo "<script language=\"JavaScript\">\r\n"; 
-				 echo " alert(\"添加失败，请注意该活动信息的完整性！\");\r\n"; 
+				 echo " alert(\"添加失败！\");\r\n"; 
 				 echo "</script>"; 
 				 exit;
 			 }

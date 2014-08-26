@@ -103,7 +103,7 @@
 			 }
 
 			 $query = "SELECT 
-			 					Activity_Student.studentid,
+			 					Activity_Student.student_id,
 			 					Student.name AS student_name,
 			 					Student.status AS student_status,		 				  	
 			 					Activity.id,
@@ -113,15 +113,16 @@
 			 				  	Activity.date,
 			 				  	Activity.place,
 			 				  	Activity.staff,
-			 				  	Activity.status AS activity_status
+			 				  	Activity.status AS activity_status,
+								Activity_Student.note
 			 			FROM 
 			 					Activity_Student
 			 			LEFT JOIN 
-			 					Activity ON Activity_Student.activityid = Activity.id
+			 					Activity ON Activity_Student.activity_id = Activity.id
 			 			LEFT JOIN
-			 					Student ON Activity_Student.studentid = Student.id
+			 					Student ON Activity_Student.student_id = Student.id
 			 			WHERE 
-			 					Activity_Student.studentid = '$Student_id'";
+			 					Activity_Student.student_id = '$Student_id'";
 
 			 $checkAsStudentData = getSql( $query );
 			 
@@ -135,7 +136,8 @@
 												'日期',
 												'地点',
 												'负责人',
-												'活动状态'),"border='1' align='center' width='888'");
+												'活动状态',
+												'备注'),"border='1' align='center' width='888'");
 		} 
 	?>
 </body>

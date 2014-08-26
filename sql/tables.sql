@@ -25,10 +25,11 @@ CREATE TABLE IF NOT EXISTS `Activity` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `Activity_Student` (
-  `activityid` int(11) NOT NULL,
-  `studentid` int(11) NOT NULL,
+  `activity_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `note` varchar(255) NOT NULL,
   `status` enum('default','deleted') NOT NULL DEFAULT 'default',
-  PRIMARY KEY (`activityid`,`studentid`)
+  PRIMARY KEY (`activity_id`,`student_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `Account` (
@@ -40,8 +41,8 @@ CREATE TABLE IF NOT EXISTS `Account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `Account_Activity` (
-  `username` varchar(255) NOT NULL,
-  `activityid` int(11) NOT NULL,
+  `account_id` int(11) NOT NULL,
+  `activity_id` int(11) NOT NULL,
   `status` enum('default','deleted') NOT NULL DEFAULT 'default',
-  PRIMARY KEY (`username`,`activityid`)
+  PRIMARY KEY (`account_id`,`activity_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

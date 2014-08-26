@@ -137,7 +137,7 @@ function getSql( $sql = '', $db = null)
     return $data;
 }
 
-function getTable($tableData, $columnsName, $style = "")
+function getTable($tableData, $columnsName, $style = "", $links = NULL)
 {
 	if(empty($tableData))
 	{
@@ -151,24 +151,40 @@ function getTable($tableData, $columnsName, $style = "")
 	{
 		die("Column names are not equal to table columns!");
 	}
-	$rowstart = "<tr>"; $rowend = "</tr>";
-	$elestart = "<td>"; $eleend = "</td>";
-	echo "<table ".$style.">".$rowstart;
+	
+	$rowstart = '<tr>'; $rowend = '</tr>';
+	$elestart = '<td>'; $eleend = '</td>';
+	echo '<table '.$style.'>'.'<thead>';
 	foreach($columnsName AS $name)
 	{
-		echo $elestart.$name.$eleend;
+		echo '<th scope="col">'.$name.'</th>';
 	}
-	echo $rowend;
-	foreach($tableData AS $row)
+	echo '</thead>';
+	echo '<tbody>';
+	if($links)
 	{
-		echo $rowstart;
-		foreach($row AS $element)
+		foreach($tableData AS $index => $row)
 		{
-			echo $elestart.$element.$eleend;
+			echo '<tr onclick="document.location = \''.$links[$index].'\';">';
+			foreach($row AS $element)
+			{
+				echo $elestart.$element.$eleend;
+			}
+			echo $rowend;
 		}
-		echo $rowend;
-	}
-	echo "</table>";
+	}else{
+		foreach($tableData AS $row)
+		{
+			echo $rowstart;
+			foreach($row AS $element)
+			{
+				echo $elestart.$element.$eleend;
+			}
+			echo $rowend;
+		}
+	}	
+	echo '</tbody>';
+	echo '</table>';
 }
 
 function getOneNumber( $sql = '', $db = null )

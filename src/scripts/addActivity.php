@@ -179,16 +179,21 @@
 						 							 'place',
 						 							 'staff'), 'Activity');
 
+			 $query = "SELECT id FROM Account WHERE username = '$_SESSION[info]'";
+			 
+			 $accountId = getOneNumber($query);
+			 
 			 $query = "SELECT id FROM Activity ORDER BY id DESC";
 
 			 $activityId = getOneNumber($query);
 
 			 $accountActivityData = array();
-			 $accountActivityData[] = $_SESSION["info"];
+			 
+			 $accountActivityData[] = $accountId;
 			 $accountActivityData[] = $activityId;
 
-			 $result2 = insert($accountActivityData, array(	'accountid',
-						 							 		'activityid'), 'Account_Activity');
+			 $result2 = insert($accountActivityData, array(	'account_id',
+						 							 		'activity_id'), 'Account_Activity');
 			 if($result1 && $result2)
 			 {
 			 	 echo "<script language=\"JavaScript\">\r\n"; 

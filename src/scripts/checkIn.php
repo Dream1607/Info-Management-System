@@ -79,6 +79,7 @@
 
 	    活动代号:  <input type="text" id="Ano" name="Ano"><br /></br>
 	    学生代号: <input type="text" id="Sno" name="Sno"><br /><br />
+	    备注: <input type="text" id="note" name="note"><br /><br />
 	    
 	    <input id="checkConfirm" type="submit" name="submit" value="签到" />
 	</form></br>
@@ -94,6 +95,7 @@
 			 $checkInData = array();
 			 $checkInData[] = $_POST["Ano"];
 			 $checkInData[] = $_POST["Sno"];
+			 $checkInData[] = $_POST["note"];
 
 			 $checkStudentExist = getOneNumber("SELECT id FROM Student WHERE id = '$_POST[Sno]'");
 
@@ -107,8 +109,9 @@
 				 exit;	
 			 }
 
-			 $result = insert($checkInData, array(	 'activityid',
-						 							 'studentid'), 'Activity_Student');
+			 $result = insert($checkInData, array(	 'activity_id',
+						 							 'student_id',
+						 							 'note'), 'Activity_Student');
 			 if($result)
 			 {
 			 	 echo "<script language=\"JavaScript\">\r\n"; 
