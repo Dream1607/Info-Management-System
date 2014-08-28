@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<head>
+	<link href="/css/deleteStudent.css" rel="stylesheet" type="text/css">
+</head>
+
+<body align="center" background="/css/pic/background.jpg">
+	
+	<a href="../index.php"><img src="/css/pic/title.png" width="1180" align="center"></img></a>
+	
+	<br /><br /><br /><br />
+	<b id='info'>{status}</b>
+    <b>输入需要删除的学生信息</b>
+    <br /><br />
+	<form id="data" name="data" action="" method="post">
+
+	    学生代号:  <input type="text" id="no" name="no"><br /></br></br>
+	    
+	    <input id="deleteConfirm" type="submit" name="submit" value="确认删除" onclick="return confirm('确认删除该学生全部的信息？')"/>
+	</form></br>
+   
+</body>
+</html>

@@ -10,7 +10,7 @@ border-color:#005AB5;
 form
 {
 font-family:KaiTi;
-font-size:20px;
+font-size:18px;
 font-weight:700;
 }
 
@@ -70,8 +70,7 @@ border:2px solid white;
 background-color:#54C4EA;
 }
 
-select:hover
-{
+select:hover{
 height:23.5px;
 width:13%;
 border-radius:5px;
@@ -85,12 +84,10 @@ background-color:white;
 
 #confirm
 {
-font-size:12px;
 width:8%;
 }
 
 #confirm:hover
 {
-font-size:12px;
 width:8%;
 }

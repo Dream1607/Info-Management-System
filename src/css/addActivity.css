@@ -1,16 +1,7 @@
-table
-{
-background-color:rgba(255,255,255,0.7);
-font-family:KaiTi;
-text-align:center;
-border:3px solid;
-border-color:#005AB5;
-}
-
 form
 {
 font-family:KaiTi;
-font-size:20px;
+font-size:18px;
 font-weight:700;
 }
 
@@ -83,14 +74,10 @@ border:2px solid white;
 background-color:white;
 }
 
-#confirm
-{
-font-size:12px;
+#confirm{
 width:8%;
 }
 
-#confirm:hover
-{
-font-size:12px;
+#confirm:hover{
 width:8%;
 }

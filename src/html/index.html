@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<head>
+  	<link rel="stylesheet" href="/css/index.css" type="text/css" />
+</head>
+
+<body>
+	<div id="main">
+		<img id="titleimage" src="/css/pic/title.png" width="1180" align="center"></img>
+		<img id="backgroundimage" src="../css/pic/background.jpg" ></img>
+	</div>
+
+	<div id="content">
+		<form action="/scripts/asActivity.php">
+			<input class="checkbox" id="checkbox1" type="submit" name="submit" value="活动签到情况查询" />
+		</form>	
+		<form action="/scripts/asStudent.php">
+			<input class="checkbox" id="checkbox2" type="submit" name="submit" value="学生参加活动查询" />
+		</form>
+	</div>
+	
+	<div id="transfer">
+		<form action="/scripts/{PAGE}.php">
+			<input id="enter" type="submit" name="submit" value="{button}" />
+		</form>	
+	</div>
+
+	<b>{status}</b>
+</body>
+</html>
+

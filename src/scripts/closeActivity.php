@@ -4,7 +4,7 @@
 	
 	require('../inc/template.inc');
 	$tpl = new Template('../html');
-	$tpl->set_file('deleteStudent', 'deleteStudent.html'); 
+	$tpl->set_file('closeActivity', 'closeActivity.html'); 
 	
 	include(__DIR__ . '/../lib.php');
 	Config::loadCustom('/etc/Info/config.ini');
@@ -13,7 +13,7 @@
 	{
 		echo "<script language=\"JavaScript\">\r\n"; 
 		echo "alert(\"您尚未登录！\");\r\n";
-		echo "location='/scripts/loginManager.php'";
+		echo "location='/scripts/logInManager.php'";
 		echo "</script>"; 
 	}
 	else
@@ -21,26 +21,26 @@
 		$tpl->set_var("status","$_SESSION[info]");
 	}
 
-	$tpl->pparse('output', 'deleteStudent');
-
+	$tpl->pparse('output', 'closeActivity');
+	
 	if(isset($_POST["submit"]))
 	{
-		 $Student_id = $_POST["no"];
-		 
-		 $checkExist = getOneNumber("SELECT id FROM Student WHERE id = '$Student_id'");
+		 $Activity_id = $_POST["no"];
+
+		 $checkExist = getOneNumber("SELECT id FROM Activity WHERE id = '$Activity_id'");
 
 		 if($checkExist === NULL)
 		 {
 		 	 echo "<script language=\"JavaScript\">\r\n"; 
-			 echo " alert(\"删除失败，不存在该学生信息！\");\r\n"; 
+			 echo " alert(\"关闭失败，不存在该活动信息！\");\r\n"; 
 			 echo "</script>"; 
 			 exit;	
 		 }
 
-		 getDb()->query("UPDATE Student SET status = 'deleted' WHERE id = '$Student_id'");	
+		 getDb()->query("UPDATE Activity SET status = 'deleted' WHERE id = '$Activity_id'");	
 
      	 echo "<script language=\"JavaScript\">\r\n"; 
-		 echo " alert(\"删除成功！\");\r\n"; 
+		 echo " alert(\"关闭成功！\");\r\n"; 
 		 echo "</script>"; 
 		 exit;
 	} 

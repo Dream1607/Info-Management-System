@@ -1,0 +1,65 @@
+table
+{
+	background-color:rgba(255,255,255,0.7);
+	font-family:KaiTi;
+	text-align:center;
+	border:3px solid;
+	border-color:#005AB5;
+}
+
+form
+{
+	font-family:KaiTi;
+	font-size:20px;
+	font-weight:700;
+}
+
+b
+{
+	font-family:KaiTi;
+	font-size:20px;
+	font-weight:700;
+}
+
+#info
+{
+	position:fixed;
+	border:0px;
+	left:2%;
+	top:2%;
+	color:black;
+	font-size:15px;
+}
+
+input{
+	height:30px;
+	width:15%;
+	border-radius:5px;
+	box-shadow: 0px 0px 5px #000;
+	font-family:KaiTi;
+	font-size:20px;
+	font-weight:700;
+	border:2px solid white;
+	background-color:#54C4EA;
+}
+
+input:hover
+{
+	height:30px;
+	width:15%;
+	border-radius:5px;
+	box-shadow: 0px 0px 5px #000;
+	font-family:KaiTi;
+	font-size:20px;
+	font-weight:700;
+	border:2px solid white;
+	background-color:white;
+}
+
+#confirm{
+	width:8%;
+}
+
+#confirm:hover{
+	width:8%;
+}

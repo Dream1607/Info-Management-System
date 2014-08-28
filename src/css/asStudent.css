@@ -31,66 +31,34 @@ color:black;
 font-size:15px;
 }
 
-input
-{
-height:23.5px;
-width:13%;
+input{
+height:30px;
+width:15%;
 border-radius:5px;
 box-shadow: 0px 0px 5px #000;
 font-family:KaiTi;
-font-size:16px;
+font-size:20px;
 font-weight:700;
 border:2px solid white;
 background-color:#54C4EA;
 }
 
-input:hover
-{
-height:23.5px;
-width:13%;
+input:hover{
+height:30px;
+width:15%;
 border-radius:5px;
 box-shadow: 0px 0px 5px #000;
 font-family:KaiTi;
-font-size:16px;
+font-size:20px;
 font-weight:700;
 border:2px solid white;
 background-color:white;
 }
 
-select
-{
-height:23.5px;
-width:13%;
-border-radius:5px;
-box-shadow: 0px 0px 5px #000;
-font-family:KaiTi;
-font-size:16px;
-font-weight:700;
-border:2px solid white;
-background-color:#54C4EA;
-}
-
-select:hover
-{
-height:23.5px;
-width:13%;
-border-radius:5px;
-box-shadow: 0px 0px 5px #000;
-font-family:KaiTi;
-font-size:16px;
-font-weight:700;
-border:2px solid white;
-background-color:white;
-}
-
-#confirm
-{
-font-size:12px;
+#confirm{
 width:8%;
 }
 
-#confirm:hover
-{
-font-size:12px;
+#confirm:hover{
 width:8%;
 }
