@@ -1,58 +1,38 @@
-var xmlHttp
-
-function GetXmlHttpObject () 
+function showActivity(blur)
 {
-
-   var xmlHttp = null;
-
-   try 
-   {
-     // Firefox, Opera 8.0+, Safari, IE 7+
-     xmlHttp = new XMLHttpRequest();
-   } 
-   catch (e) 
-   {
-     // Internet Explorer - old IE - prior to version 7
-     try 
-     {
-        xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
-     } 
-     catch (e) 
-     {
-        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-     }
- }
-
- return xmlHttp;
-}
-
-function showActivity(name,value)
-{
-    xmlHttp=GetXmlHttpObject()
-
-    if (xmlHttp==null)
-    {
-        alert ("Browser does not support HTTP Request")
-        return
-    }
-    
     var url="getActivity.php"
     type = document.getElementById("type").value
     department = document.getElementById("department").value
     name = document.getElementById("name").value
-    
     url=url+"?type="+type+"&department="+department+"&name="+name
     url=url+"&sid="+Math.random()
     
-    xmlHttp.onreadystatechange=stateChanged 
-    xmlHttp.open("GET",url,true)
-    xmlHttp.send(null)
+    if(!blur)
+    {
+        url=url+"&blur=false"
+    }
+    return url
 }
 
-function stateChanged() 
-{ 
-    if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete")
-    { 
-        document.getElementById("activity").innerHTML=xmlHttp.responseText 
-    } 
-}
+$(document).ready(function(){
+    $("#activity").load("getActivity.php");
+    $(".select").change(function(){
+        url=showActivity(true);
+        $("#activity").load(url);
+    });
+    $("#name").on('input',function(){  
+        url=showActivity(true);
+        $("#activity").load(url);
+    });
+    $("#name").keyup(function(){
+        if(event.keyCode==13)
+        {
+            url=showActivity(false);
+            $("#activity").load(url);
+        }
+    });
+    $("#confirm").click(function(){
+        url=showActivity(false);
+        $("#activity").load(url);
+    });
+});
