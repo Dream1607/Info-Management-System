@@ -22,42 +22,4 @@
 	}
 
 	$tpl->pparse('output', 'checkIn');
-	
-	if(isset($_POST["submit"]))
-	{
-		 $checkInData = array();
-		 $checkInData[] = $_POST["Ano"];
-		 $checkInData[] = $_POST["Sno"];
-		 $checkInData[] = $_POST["note"];
-
-		 $checkStudentExist = getOneNumber("SELECT id FROM Student WHERE id = '$_POST[Sno]'");
-
-		 $checkActivityExist = getOneNumber("SELECT id FROM Activity WHERE id = '$_POST[Ano]'");
-
-		 if($checkStudentExist === NULL || $checkActivityExist === NULL)
-		 {
-		 	 echo "<script language=\"JavaScript\">\r\n"; 
-			 echo " alert(\"签到失败，请检查是否存在该学生或该活动！\");\r\n"; 
-			 echo "</script>"; 
-			 exit;	
-		 }
-
-		 $result = insert($checkInData, array(	 'activity_id',
-					 							 'student_id',
-					 							 'note'), 'Activity_Student');
-		 if($result)
-		 {
-		 	 echo "<script language=\"JavaScript\">\r\n"; 
-			 echo " alert(\"签到成功！\");\r\n"; 
-			 echo "</script>"; 
-			 exit;	
-		 }
-		 else
-		 {
-		 	 echo "<script language=\"JavaScript\">\r\n"; 
-			 echo " alert(\"签到失败，请检查是否存在该学生或该活动！\");\r\n"; 
-			 echo "</script>"; 
-			 exit;
-		 }		
-	} 
 ?>
