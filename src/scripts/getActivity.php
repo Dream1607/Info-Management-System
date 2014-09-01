@@ -18,7 +18,7 @@
             if(is_numeric($_GET['student']))
             {
                 $student = $_GET['student'];
-                $query = "SELECT Activity.* FROM Activity_student LEFT JOIN Activity ON Activity.id = Activity_student.activity_id WHERE Activity_student.student_id = '$student'";
+                $query = "SELECT Activity.* FROM Activity_Student LEFT JOIN Activity ON Activity.id = Activity_Student.activity_id WHERE Activity_Student.student_id = '$student'";
                 $getActivityData = getSql( $query );
                 
                 getTable($getActivityData,array(    '活动代号',

@@ -14,6 +14,13 @@ function mark(row)
     $("#studentChecklist").load(url);
 }
 
+function getUrlParam(name)
+{
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r!=null) return unescape(r[2]); return null; //返回参数值
+} 
+
 function showStudent(blur)
 {
     var url="getStudent.php"
@@ -32,6 +39,36 @@ function showStudent(blur)
 
 $(document).ready(function(){
     $("#student").load("getStudent.php");
+    
+    $("tbody").find("tr").each(function(){
+        var row = $(this)
+        student = $(this).children('td').eq(0).text()
+        activity = getUrlParam('activity')
+        $.post("postCheckList.php",
+        {
+          student: student,
+          activity: activity
+        },
+        function(data){
+            if(data == 1)
+            {
+                row.children('td').children('input').attr("checked",'true')
+            }
+        });
+    });
+    
+    $(":checkbox").click(function(){
+        status = $(this).is(':checked')
+        student = $(this).parent('td').parent('tr').children('td').eq(0).text();
+        activity = getUrlParam('activity')
+        $.post("postCheckList.php",
+        {
+          student: student,
+          activity: activity,
+          status: status
+        });
+    });
+    
     $(".select").change(function(){
         url=showStudent(true);
         $("#student").load(url);

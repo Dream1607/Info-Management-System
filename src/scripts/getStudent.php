@@ -18,7 +18,7 @@
             if(is_numeric($_GET['activity']))
             {
                 $activity = $_GET['activity'];
-                $query = "SELECT Student.* FROM Activity_student LEFT JOIN Student ON Student.id = Activity_student.student_id WHERE Activity_student.activity_id = '$activity'";
+                $query = "SELECT Student.* FROM Activity_Student LEFT JOIN Student ON Student.id = Activity_Student.student_id WHERE Activity_Student.activity_id = '$activity'";
                 $getStudentData = getSql( $query );
                 
                 getTable($getStudentData, array('学号',
@@ -52,9 +52,6 @@
 
         $tpl->pparse('output', 'getStudent');
 
-        $query = "SELECT name FROM Activity WHERE id = '$_GET[activity]'";
-        $activityName = getOneNumber( $query );
-
         $query = "SELECT * FROM Student";
         $getStudentData = getSql( $query );
 
@@ -65,7 +62,7 @@
                                         '年级',
                                         '班级',
                                         '状态'),"border='1' align='center' width='888'", NULL, 
-                                    "<td><input type='checkbox' onclick='mark(this);'/></td>");
+                                    "<td><input type='checkbox'/></td>");
     } 
     else
     {

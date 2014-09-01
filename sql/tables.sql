@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `Activity` (
 CREATE TABLE IF NOT EXISTS `Activity_Student` (
   `activity_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
-  `note` varchar(255) NOT NULL,
+  `note` varchar(255) NOT NULL DEFAULT '',
   `status` enum('default','deleted') NOT NULL DEFAULT 'default',
   PRIMARY KEY (`activity_id`,`student_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
