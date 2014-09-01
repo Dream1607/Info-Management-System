@@ -11,7 +11,7 @@ function mark(row)
     activity = document.getElementById("activity").innerHTML;
     student = tds[0].innerHTML;
     var url="markStudent.php?activity="+activity+"&student="+student;
-    $("#studentChecklist").load(url);
+    $("#mytableChecklist").load(url);
 }
 
 function getUrlParam(name)
@@ -38,7 +38,7 @@ function showStudent(blur)
 }
 
 $(document).ready(function(){
-    $("#student").load("getStudent.php");
+    $("#mytable").load("getStudent.php");
     
     $("tbody").find("tr").each(function(){
         var row = $(this)
@@ -71,21 +71,21 @@ $(document).ready(function(){
     
     $(".select").change(function(){
         url=showStudent(true);
-        $("#student").load(url);
+        $("#mytable").load(url);
     });
     $("#name").on('input',function(){  
         url=showStudent(true);
-        $("#student").load(url);
+        $("#mytable").load(url);
     });
-    $("#name").keyup(function(){
+    $(document).keydown(function(event) {
         if(event.keyCode==13)
-        {
-            url=showStudent(false);
-            $("#student").load(url);
-        }
+            {
+                url=showActivity(false);
+                $("#mytable").load(url);
+            }
     });
     $("#confirm").click(function(){
         url=showStudent(false);
-        $("#student").load(url);
+        $("#mytable").load(url);
     });
 });

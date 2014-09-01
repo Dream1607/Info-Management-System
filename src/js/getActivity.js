@@ -15,24 +15,24 @@ function showActivity(blur)
 }
 
 $(document).ready(function(){
-    $("#activity").load("getActivity.php");
+    $("#mytable").load("getActivity.php");
     $(".select").change(function(){
         url=showActivity(true);
-        $("#activity").load(url);
+        $("#mytable").load(url);
     });
     $("#name").on('input',function(){  
         url=showActivity(true);
-        $("#activity").load(url);
+        $("#mytable").load(url);
     });
-    $("#name").keyup(function(){
+    $(document).keydown(function(event) {
         if(event.keyCode==13)
-        {
-            url=showActivity(false);
-            $("#activity").load(url);
-        }
+            {
+                url=showActivity(false);
+                $("#mytable").load(url);
+            }
     });
-    $("#confirm").click(function(){
+    $("#search").click(function(){
         url=showActivity(false);
-        $("#activity").load(url);
+        $("#mytable").load(url);
     });
 });

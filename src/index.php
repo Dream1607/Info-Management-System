@@ -3,25 +3,68 @@
 
 	session_start();
 
+	$tpl = new Template('./html'); 
+	$tpl->set_file('index', 'index.html');
+
+	include(__DIR__ . '/lib.php');
+	Config::loadCustom('/etc/Info/config.ini');
+
 	if(isset($_POST["exit"]))
 	{
 		unset($_SESSION["info"]);
 		header("Location: /index.php");
 	}
 
-	$tpl = new Template('./html'); 
-	$tpl->set_file('index', 'index.html'); 
+	if(isset($_POST["submitmanager"]))
+	{
+		 $username = $_POST["username"];
+		 $password = md5($_POST["password"]);
 
-	if(!isset($_SESSION["info"]))
-	{
-		$tpl->set_var("PAGE","logInManager");
-		$tpl->set_var("button","管理员登陆");
+		 $checkUsers = getSql("SELECT * FROM Account");
+
+		 foreach ($checkUsers as $account) 
+		 {
+		 	if($username === $account['username'] && $password === $account['password'] && $account['status'] === 'default')
+		 	{
+		 		 $_SESSION['info'] = $username;
+		 		 if($username === 'info')
+		 		 {
+		 		 	echo "<script>location='/scripts/infoManagerIndex.php'</script>";
+		 		 }
+		 		 else
+		 		 {
+		 		 	echo "<script>location='/scripts/otherManagerIndex.php'</script>";
+		 		 }
+
+		 	}
+		 }
+
+		 echo "<script language=\"JavaScript\">\r\n"; 
+		 echo "alert(\"用户名或密码错误！\");\r\n";
+		 echo "</script>";
+		 exit;
 	}
-	else
+
+	if(isset($_POST["submitstudent"]))
 	{
-		$tpl->set_var("PAGE","indexAdmin");
-		$tpl->set_var("button","进入管理员界面");
-		$tpl->set_var("status","$_SESSION[info]");
+		 $username = $_POST["username"];
+		 $password = $_POST["password"];
+
+		 $checkUsers = getSql("SELECT id,status FROM Student");
+
+		 foreach ($checkUsers as $account) 
+		 {
+		 	if($username === $account['id'] && $password === $account['id'] && $account['status'] === 'default')
+		 	{
+		 		 	$_SESSION['student'] = $username;
+		 		 	echo "<script>location='/scripts/studentIndex.php'</script>";
+		 	}
+		 }
+
+		 echo "<script language=\"JavaScript\">\r\n"; 
+		 echo "alert(\"用户名或密码错误！\");\r\n";
+		 echo "</script>";
+		 exit;
 	}
 
 	$tpl->pparse('output', 'index');

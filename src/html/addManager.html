@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<head>
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+  	<script src="/js/addManager.js"/></script>
+  	<link rel="stylesheet" href="/css/addManager.css" type="text/css"/>
+
+</head>
+
+<body>
+		
+		<div id="title">
+			<img id="titleimage" src="/css/pic/title.png"></img>
+			<div id="user">
+				欢迎您，<span>{user}</span> 
+				<input id="logout" class="button" type="submit" name="submit" value="注销" />
+			</div>
+		</div>			
+
+		<div id="addmanager">
+			<img src="/css/pic/head.png" id="head"></img>
+			<form action="" method="post">
+				<div id="input1" class="input">
+					<input type="text" id="username" class="username" name="username" />
+					<label id="forusername" class="forusername">用户名</label>
+				</div>
+
+				<div id="input2" class="input">
+					<input type="password" id="password1" class="password1" name="password1"/>
+					<label id="forpassword1" class="forpassword">密码</label>
+				</div>
+
+				<div id="input3" class="input">
+					<input type="password" id="password2" class="password2" name="password2"/>
+					<label id="forpassword2" class="forpassword">确认密码</label>
+				</div>
+
+				<input id="confirm" type="submit" name="submit" value="添加" />
+			</form>
+		</div>	
+
+		<div id="note">
+			<span id="intro">Dream Work, Contact Us! royxue812@gmail.com</span>
+		</div>	
+
+
+</body>
+</html>

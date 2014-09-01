@@ -1,0 +1,227 @@
+b
+{
+position:fixed;
+background-color:black;
+border:0px;
+left:2%;
+top:2%;
+color:#C5CBCD;
+font-family:KaiTi;
+font-size:15px;
+font-weight:700;
+}
+
+
+#transfer
+{
+position:fixed;
+width:100%;
+top:0px;
+left:0px;
+height:6%;
+background-color:#000000;
+}
+
+#enter
+{
+position:fixed;
+background-color:black;
+border:0px;
+right:1%;
+top:2%;
+color:#C5CBCD;
+font-family:KaiTi;
+font-size:15px;
+font-weight:700;
+}
+
+#enter:hover
+{
+position:fixed;
+right:1%;
+top:2%;
+color:#FFFFFF;
+font-family:KaiTi;
+font-size:15px;
+font-weight:700;
+}
+
+
+/* ----------------------------------------------------title div-----------------------------------------*/
+#title{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:80px;
+	background-color: #1f3f8c;
+}
+
+	#titleimage{
+		position:absolute;
+		height:80px;
+		left:100px;
+	}
+
+
+	#title #user{
+		position: absolute;
+		width:200px;
+		height:80px;
+		right:100px;
+		line-height: 80px;
+		color:white;
+		font-size:10px;
+	}
+
+		#title #user #logout{
+			height:18px;
+			line-height: 10px;
+			width:40px;
+			color:white;
+			background-color: rgba(1,1,1,0);
+			border-left:1px solid white;
+			border-top: 0px;
+			border-bottom: 0px;
+			border-right: 0px;
+		}
+
+/* ----------------------------------------------------note div-----------------------------------------*/
+#note{
+	width:100%;
+	height:100px;
+	position:absolute;
+	top:544px;
+	left:0px;
+	background-color: rgb(200,200,200);
+}
+
+	#intro{
+		position:absolute;
+		width:800px;
+		left:50%;
+		margin-left: -400px;
+		top:30px;
+		text-align: center;
+		color:white;
+	}
+
+
+/* ----------------------------------------------------add manager div-----------------------------------------*/
+#addstudent{
+	position:absolute;
+	width:100%;
+	height:460px;
+	top:82px;
+	left:0px;
+	background-color:#fbd453;
+	line-height: 25px;
+}
+
+	#addstudent #head{
+		width:150px;
+		border-radius: 40px;
+		border:3px solid white;
+		position:absolute;
+		top:40px;
+		left:50%;
+		margin-left: -75px;
+	}
+
+	#addstudent div{
+		width:200px;
+		height:25px;
+	}
+
+	#addstudent label{
+		position:absolute;
+		left:5px;
+		color:#666;
+		font-size:14px;
+	}
+
+	#addstudent .input{
+		position:absolute;
+		width:180px;
+		height:20px;
+		line-height: 25px;
+		position:absolute;
+		left:50%;
+		margin-left:-220px;
+	}
+
+		#addstudent #studentnumber{
+			top:240px;
+		}
+
+		#addstudent #studentname{
+			top:290px;
+		}
+
+		#addstudent .input input{
+			position:absolute;
+			width:180px;
+			height:20px;
+			border-radius:4px;
+			border:2px solid;
+			border-color: rgb(132,172,226);
+			color:black;
+			font:15px Sniglet;
+		} 
+
+	#addstudent #studentgender{
+		position:absolute;
+		width:180px;
+		height:20px;
+		line-height: 25px;
+		position:absolute;
+		left:50%;
+		margin-left:-220px;
+		top:340px;
+	}
+
+
+	#addstudent select{
+		position:absolute;
+		left:0px;
+		border-radius:4px;
+		border:2px solid;
+		border-color: rgb(132,172,226);
+		background-color: white;
+	}
+	
+	#addstudent #studentmajor, #studentgrade, #studentclass{
+		position:absolute;
+		left:50%;
+		margin-left:40px;
+	}
+
+	#studentmajor{
+		top:240px;
+	}
+
+	#studentgrade{
+		top:290px;
+	}
+
+	#studentclass{
+		top:340px;
+	}
+
+	#addstudent #confirm{
+		position:absolute;
+		width:80px;
+		height:25px;
+		top:400px;
+		left:50%;
+		margin-left: -40px;
+		border-radius:4px;
+		border:1.5px solid;
+		border-color: rgb(132,172,226);
+		background-color: rgba(1,1,1,0);
+		color:white;
+		font-size:13px;
+	}
+	
+	
+

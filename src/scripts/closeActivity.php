@@ -9,17 +9,7 @@
 	include(__DIR__ . '/../lib.php');
 	Config::loadCustom('/etc/Info/config.ini');
 
-	if(!isset($_SESSION["info"]))
-	{
-		echo "<script language=\"JavaScript\">\r\n"; 
-		echo "alert(\"您尚未登录！\");\r\n";
-		echo "location='/scripts/logInManager.php'";
-		echo "</script>"; 
-	}
-	else
-	{
-		$tpl->set_var("status","$_SESSION[info]");
-	}
+	$tpl->set_var('user', $_SESSION['info']);
 
 	$tpl->pparse('output', 'closeActivity');
 	

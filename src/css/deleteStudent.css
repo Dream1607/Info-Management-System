@@ -1,68 +1,210 @@
-table
-{
-background-color:rgba(255,255,255,0.7);
-font-family:KaiTi;
-text-align:center;
-border:3px solid;
-border-color:#005AB5;
-}
-
-form
-{
-font-family:KaiTi;
-font-size:20px;
-font-weight:700;
-}
-
 b
 {
-font-family:KaiTi;
-font-size:20px;
-font-weight:700;
-}
-
-#info
-{
 position:fixed;
+background-color:black;
 border:0px;
 left:2%;
 top:2%;
-color:black;
+color:#C5CBCD;
+font-family:KaiTi;
 font-size:15px;
-}
-
-input
-{
-height:30px;
-width:15%;
-border-radius:5px;
-box-shadow: 0px 0px 5px #000;
-font-family:KaiTi;
-font-size:20px;
 font-weight:700;
-border:2px solid white;
-background-color:#54C4EA;
 }
 
-input:hover
+
+#transfer
 {
-height:30px;
-width:15%;
-border-radius:5px;
-box-shadow: 0px 0px 5px #000;
+position:fixed;
+width:100%;
+top:0px;
+left:0px;
+height:6%;
+background-color:#000000;
+}
+
+#enter
+{
+position:fixed;
+background-color:black;
+border:0px;
+right:1%;
+top:2%;
+color:#C5CBCD;
 font-family:KaiTi;
-font-size:20px;
+font-size:15px;
 font-weight:700;
-border:2px solid white;
-background-color:white;
 }
 
-#confirm
+#enter:hover
 {
-width:8%;
+position:fixed;
+right:1%;
+top:2%;
+color:#FFFFFF;
+font-family:KaiTi;
+font-size:15px;
+font-weight:700;
 }
 
-#confirm:hover
-{
-width:8%;
+
+/* ----------------------------------------------------title div-----------------------------------------*/
+#title{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:80px;
+	background-color: #1f3f8c;
 }
+
+	#titleimage{
+		position:absolute;
+		height:80px;
+		left:100px;
+	}
+
+
+	#title #user{
+		position: absolute;
+		width:200px;
+		height:80px;
+		right:100px;
+		line-height: 80px;
+		color:white;
+		font-size:10px;
+	}
+
+		#title #user #logout{
+			height:18px;
+			line-height: 10px;
+			width:40px;
+			color:white;
+			background-color: rgba(1,1,1,0);
+			border-left:1px solid white;
+			border-top: 0px;
+			border-bottom: 0px;
+			border-right: 0px;
+		}
+
+
+/* ----------------------------------------------------as activity div-----------------------------------------*/
+#deletestudent{
+	position:absolute;
+	width:100%;
+	min-height: 600px;
+	height:auto;
+	top:82px;
+	left:0px;
+	background-color: #fbd453;
+}
+	
+	#deletestudent #studentname{
+		position:absolute;
+		width:600px;
+		height:30px;
+		line-height: 35px;
+		left:50%;
+		margin-left: -300px;
+		top: 60px;
+	}
+
+	#deletestudent #name{
+		position:absolute;
+		left:0px;
+		width:550px;
+		height:30px;
+		border-radius:6px;
+		border:2px solid;
+		border-color: rgb(132,172,226);
+		color:black;
+		font:15px;
+	}
+
+	#deletestudent #studentnumber, #studentgender, #studentmajor, #studentgrade, #studentclass{
+		position:absolute;
+		width:120px;
+		height:20px;
+		line-height: 20px;
+		position:absolute;
+		top:140px;
+	}
+
+
+	#deletestudent #studentnumber{		
+		left:50%;
+		margin-left: -400px;
+	}
+
+	#deletestudent #studentgender{
+		left:50%;
+		margin-left: -230px;
+	}
+
+	#deletestudent #studentmajor{
+		left:50%;
+		margin-left: -60px;
+	}
+
+	#deletestudent #studentgrade{
+		left:50%;
+		margin-left: 110px;
+	}
+
+	#deletestudent #studentclass{
+		left:50%;
+		margin-left: 280px;
+	}
+
+	#search{
+		position:absolute;
+		width:30px;
+		top:2px;
+		left:560px;
+	}
+
+	
+
+	#deletestudent select{
+		position:absolute;
+		left:0px;
+		width:150px;
+		border-radius:4px;
+		border:2px solid;
+		border-color: rgb(132,172,226);
+		background-color: white;
+	}
+
+	#deletestudent label{
+		position:absolute;
+		left:0px;
+		width:50px;
+	}
+
+	#deletestudent .input input{
+		position:absolute;
+		left:0px;
+		width:120px;
+		height:15px;
+		border-radius:4px;
+		border:2px solid;
+		border-color: rgb(132,172,226);
+		background-color: white;
+	}
+
+
+
+	#deletestudent #fornumber, #deletestudent #forgender, #deletestudent #formajor, #deletestudent #forgrade, #deletestudent #forclass{
+		position:absolute;
+		left:5px;
+		color:#666;
+		font-size:12px;
+	}
+
+
+	#deletestudent #forname{
+		position:absolute;
+		left:10px;
+		color:#666;
+		font-size:15px;
+	}
+

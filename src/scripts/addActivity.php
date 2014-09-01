@@ -9,35 +9,13 @@
 	include(__DIR__ . '/../lib.php');
 	Config::loadCustom('/etc/Info/config.ini');
 
-	if(!isset($_SESSION["info"]))
-	{
-		echo "<script language=\"JavaScript\">\r\n"; 
-		echo "alert(\"您尚未登录！\");\r\n";
-		echo "location='/scripts/loginManager.php'";
-		echo "</script>"; 
-	}
-	if(isset($_SESSION["info"]))
-	{
-		if($_SESSION["info"] == "info")
-		{
-			echo "<script language=\"JavaScript\">\r\n"; 
-			echo "alert(\"您没有添加活动的权限!\");\r\n";
-			echo "location='/scripts/indexAdmin.php'";
-			echo "</script>"; 
-		}
-		else
-		{
-			$tpl->set_var("status","$_SESSION[info]");
-		}
-	}
-
-	date_default_timezone_set("PRC");
+	$tpl->set_var("user","$_SESSION[info]");
 
 	$tpl->pparse('output', 'addActivity');
 
 	if(isset($_POST["submit"]))
 	{
-		 $activityData = array();
+		$activityData = array();
 		
 		//sanitize input
 		if(preg_match("/^[\x{4e00}-\x{9fa5}]+$/u",$_POST["type"])){
@@ -64,7 +42,6 @@
 			$activityData[] = $_POST["staff"];
 		}else die("Error: Staff");
 		
-
 		 $result1 = insert($activityData, array( 'type',
 					 							 'department',
 					 							 'name',
@@ -74,7 +51,7 @@
 
 		 $query = "SELECT id FROM Account WHERE username = '$_SESSION[info]'";
 		 $accountId = getOneNumber($query);
-		 $query = "SELECT id FROM Activity ORDER BY id DESC";
+		 $query = "SELECT id FROM Activity ORDER BY id DESC LIMIT 1";
 		 $activityId = getOneNumber($query);
 
 		 $accountActivityData = array();

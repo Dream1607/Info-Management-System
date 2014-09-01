@@ -2,31 +2,76 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <head>
-  	<link rel="stylesheet" href="/css/index.css" type="text/css" />
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+  	<script src="/js/index.js"/></script>
+  	<link rel="stylesheet" href="/css/index.css" type="text/css"/>
+
 </head>
 
 <body>
-	<div id="main">
-		<img id="titleimage" src="/css/pic/title.png" width="1180" align="center"></img>
-		<img id="backgroundimage" src="../css/pic/background.jpg" ></img>
-	</div>
+		
+		<div id="title">
+			<img id="titleimage" src="/css/pic/title.png"></img>
+			<div id="tabs">
+				<button id="login1" class="loginbutton">管理员登录</button>
+				<button id="login2" class="loginbutton">学生登录</button>
+			</div>
+		</div>			
 
-	<div id="content">
-		<form action="/scripts/asActivity.php">
-			<input class="checkbox" id="checkbox1" type="submit" name="submit" value="活动签到情况查询" />
-		</form>	
-		<form action="/scripts/asStudent.php">
-			<input class="checkbox" id="checkbox2" type="submit" name="submit" value="学生参加活动查询" />
-		</form>
-	</div>
-	
-	<div id="transfer">
-		<form action="/scripts/{PAGE}.php">
-			<input id="enter" type="submit" name="submit" value="{button}" />
-		</form>	
-	</div>
 
-	<b>{status}</b>
+
+
+		<div id="main">
+			<span id="banner">We think, then we do</span>
+			<img src="/css/pic/index1.png" id="image1"></img>
+			<img src="/css/pic/index2.png" id="image2"><img>			
+			<img src="/css/pic/index3.png" id="image3"><img>
+			<img src="/css/pic/index4.png" id="image4"><img>
+
+		</div>	
+
+		<div id="note">
+			<span id="intro">Dream Work, Contact Us! royxue812@gmail.com</span>
+		</div>	
+
+		<!--管理员登陆框-->
+		<div id="loginmanager">
+
+			<form action="" method="post">
+				<div class="input">
+					<input type="text" id="managerusername" class="username" name="username" />
+					<label id="formanagerusername" class="forusername">admin-username</label>
+				</div>
+
+				<div class="input">
+					<input type="password" id="managerpassword" class="password" name="password"/>
+					<label id="formanagerpassword" class="forpassword">password</label>
+				</div>
+				<input id="managerlogin" class="button" type="submit" name="submitmanager" value="登录" />
+			</form>
+
+			<button id="managercancel" class="button">取消</button>
+		</div>
+
+		<!--学生用户登陆框-->
+		<div id="loginstudent">
+
+			<form action="" method="post">
+				<div class="input">
+					<input type="text" id="studentusername" class="username" name="username" />
+					<label id="forstudentusername" class="forusername">student ID</label>
+				</div>
+
+				<div class="input">
+					<input type="password" id="studentpassword" class="password" name="password"/>
+					<label id="forstudentpassword" class="forpassword">password</label>
+				</div>
+
+				<input id="studentlogin" class="button" type="submit" name="submitstudent" value="登录" />
+			</form>
+
+			<button id="studentcancel" class="button">取消</button>
+		</div>
+
 </body>
 </html>
-
