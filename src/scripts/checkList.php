@@ -4,7 +4,7 @@
 	
 	require('../inc/template.inc');
 	$tpl = new Template('../html');
-	$tpl->set_file('checkIn', 'checkIn.html'); 
+	$tpl->set_file('checkList', 'checkList.html'); 
 	
 	include(__DIR__ . '/../lib.php');
 	Config::loadCustom('/etc/Info/config.ini');
@@ -21,5 +21,5 @@
 		$tpl->set_var("status","$_SESSION[info]");
 	}
 
-	$tpl->pparse('output', 'checkIn');
+	$tpl->pparse('output', 'checkList');
 ?>
