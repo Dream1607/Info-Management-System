@@ -2,7 +2,7 @@
     include(__DIR__ . '/../lib.php');
     Config::loadCustom('/etc/Info/config.ini');
 
-    if(strstr($_SERVER['HTTP_REFERER'],"checkIn"))
+    if(isset($_SERVER['HTTP_REFERER']) && strstr($_SERVER['HTTP_REFERER'],"checkIn"))
     {
         session_start();
 
@@ -138,7 +138,7 @@
             }
         }
     }
-    if(strstr($_SERVER['HTTP_REFERER'],"checkIn"))
+    if(isset($_SERVER['HTTP_REFERER']) && strstr($_SERVER['HTTP_REFERER'],"checkIn"))
     {
         $getActivityData = getSql( $query );
 

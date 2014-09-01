@@ -1,46 +1,33 @@
 <?php
-	header("Content-type: text/html; charset=utf-8");
-	session_start();
-	
-	require('../inc/template.inc');
-	$tpl = new Template('../html');
-	$tpl->set_file('getStudent', 'getStudent.html'); 
-	
-	include(__DIR__ . '/../lib.php');
-	Config::loadCustom('/etc/Info/config.ini');
+        if(isset($_SERVER['HTTP_REFERER']) && strstr($_SERVER['HTTP_REFERER'],"checkIn"))
+        {
+            header("Content-type: text/html; charset=utf-8");
+            session_start();
 
-	$tpl->set_var("activity","$_GET[activity]");
-	
-	$tpl->pparse('output', 'getStudent');
+            require('../inc/template.inc');
+            $tpl = new Template('../html');
+            $tpl->set_file('getStudent', 'getStudent.html'); 
 
-	$query = "SELECT name FROM Activity WHERE id = '$_GET[activity]'";
-	$activityName = getOneNumber( $query );
+            include(__DIR__ . '/../lib.php');
+            Config::loadCustom('/etc/Info/config.ini');
 
-	$query = "SELECT * FROM Student";
-	$getStudentData = getSql( $query );
+            $tpl->set_var("activity","$_GET[activity]");
 
-	$columnsName = array('学号','姓名','性别','专业','年级','班级','状态');
+            $tpl->pparse('output', 'getStudent');
 
-	$rowstart = '<tr>'; $rowend = '</tr>';
-	$elestart = '<td>'; $eleend = '</td>';
-	echo '<table '."border='1' align='center' width='888'".'>'.'<thead>';
-	foreach($columnsName AS $name)
-	{
-		echo '<th scope="col">'.$name.'</th>';
-	}
-	echo '</thead>';
-	echo '<tbody>';
+            $query = "SELECT name FROM Activity WHERE id = '$_GET[activity]'";
+            $activityName = getOneNumber( $query );
 
-	foreach($getStudentData AS $row)
-	{
-		echo $rowstart;
-		foreach($row AS $element)
-		{
-			echo $elestart.$element.$eleend;
-		}
-		echo "<td><input type='checkbox' onclick='mark(this);'/></td>";
-		echo $rowend;
-	}
-	echo '</tbody>';
-	echo '</table>';
+            $query = "SELECT * FROM Student";
+            $getStudentData = getSql( $query );
+
+            getTable($getStudentData, 
+                    array('学号','姓名','性别','专业','年级','班级','状态'),
+                    "border='1' align='center' width='888'", 
+                    NULL, 
+                    "<td><input type='checkbox' onclick='mark(this);'/></td>");
+        } else 
+        {
+            echo "shit";
+        }
 ?>

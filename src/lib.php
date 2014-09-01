@@ -137,7 +137,7 @@ function getSql( $sql = '', $db = null)
     return $data;
 }
 
-function getTable($tableData, $columnsName, $style = "", $links = NULL)
+function getTable($tableData, $columnsName, $style = "", $links = NULL, $additiveEle = "")
 {
 	if(empty($tableData))
 	{
@@ -170,7 +170,7 @@ function getTable($tableData, $columnsName, $style = "", $links = NULL)
 			{
 				echo $elestart.$element.$eleend;
 			}
-			echo $rowend;
+			echo $additiveEle.$rowend;
 		}
 	}else{
 		foreach($tableData AS $row)
@@ -180,7 +180,7 @@ function getTable($tableData, $columnsName, $style = "", $links = NULL)
 			{
 				echo $elestart.$element.$eleend;
 			}
-			echo $rowend;
+			echo $additiveEle.$rowend;
 		}
 	}	
 	echo '</tbody>';
