@@ -43,7 +43,7 @@
     } 
     else 
     { 
-        if(isset($_SERVER['HTTP_REFERER']) && strstr($_SERVER['HTTP_REFERER'],"checkList"))
+        if(isset($_SERVER['HTTP_REFERER']) && strstr($_SERVER['HTTP_REFERER'],"signInTable"))
         {
             session_start();
 

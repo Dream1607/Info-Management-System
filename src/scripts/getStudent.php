@@ -40,7 +40,7 @@
         }
         
     } 
-    else if(isset($_SERVER['HTTP_REFERER']) && strstr($_SERVER['HTTP_REFERER'],"checkList"))
+    else if(isset($_SERVER['HTTP_REFERER']) && strstr($_SERVER['HTTP_REFERER'],"signInTable"))
     {
         header("Content-type: text/html; charset=utf-8");
         session_start();

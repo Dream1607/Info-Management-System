@@ -44,7 +44,7 @@ $(document).ready(function(){
         var row = $(this)
         student = $(this).children('td').eq(0).text()
         activity = getUrlParam('activity')
-        $.post("postCheckList.php",
+        $.post("postSignInTable.php",
         {
           student: student,
           activity: activity
@@ -61,7 +61,7 @@ $(document).ready(function(){
         status = $(this).is(':checked')
         student = $(this).parent('td').parent('tr').children('td').eq(0).text();
         activity = getUrlParam('activity')
-        $.post("postCheckList.php",
+        $.post("postSignInTable.php",
         {
           student: student,
           activity: activity,
@@ -80,11 +80,11 @@ $(document).ready(function(){
     $(document).keydown(function(event) {
         if(event.keyCode==13)
             {
-                url=showActivity(false);
+                url=showStudent(false);
                 $("#mytable").load(url);
             }
     });
-    $("#confirm").click(function(){
+    $("#search").click(function(){
         url=showStudent(false);
         $("#mytable").load(url);
     });

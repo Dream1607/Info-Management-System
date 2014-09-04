@@ -4,8 +4,8 @@
 <head>
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
         <script src="/js/getActivity.js"/></script>
-  	<script src="/js/signInTable.js"/></script>
-  	<link rel="stylesheet" href="/css/signInTable.css" type="text/css"/>
+  	<script src="/js/asActivity.js"/></script>
+  	<link rel="stylesheet" href="/css/asActivity.css" type="text/css"/>
 
 </head>
 
@@ -19,10 +19,53 @@
 			</div>
 		</div>			
 
-		<div id="deletestudent">
+		
+<!-- 按活动查询 界面 -->
+                <div id="asactivity">
 
-			<img src="/css/pic/signInTableHead.png" id="head"><img>
+                        <div id="activityname">
+                                <input type="text" id="name" name="name">
+                                <label id="forname">输入活动名称</label>
+                                <input id="search" type="image" src="/css/pic/search.png"/>
+                        </div>
 
+                        <div id="activitytype">
+                                <select id="type" name="type" class="select">
+                                        <option value="default"></option>
+                                        <option value="体育竞技类">体育竞技类</option>
+                                        <option value="文化艺术类">文化艺术类</option>
+                                        <option value="科技创新类">科技创新类</option>
+                                        <option value="志愿服务类">志愿服务类</option>
+                                        <option value="知识竞赛类">知识竞赛类</option>
+                                        <option value="娱乐放松类">娱乐放松类</option>
+                                        <option value="学术讲座类">学术讲座类</option>
+                                        <option value="经验交流类">经验交流类</option>
+                                        <option value="社会实践类">社会实践类</option>
+                                </select>
+                                <label id="fortype">选择活动类型</label>
+                        </div>
+
+                        <div id="activitydepartment">
+                                <select id="department" name="department" class="select">
+                                        <option value="default"></option>
+                                        <option value="体育部">体育部</option>
+                                        <option value="文化部">文化部</option>
+                                        <option value="外联部">外联部</option>
+                                        <option value="实践部">实践部</option>
+                                        <option value="团宣部">团宣部</option>
+                                        <option value="团组部">团组部</option>
+                                        <option value="学习部">学习部</option>
+                                        <option value="信息宣">信息宣</option>
+                                        <option value="办公室">办公室</option>
+                                        <option value="青年志愿者协会">青年志愿者协会</option>
+                                        <option value="计算机协会">计算机协会</option>
+                                        <option value="信息月刊">信息月刊</option>
+                                        <option value="信息学院辩论队">信息学院辩论队</option>
+                                        <option value="党总支">党总支</option>
+                                        <option value="研究生会">研究生会</option>
+                                </select>
+                                <label id="fordepartment">选择主办部门</label>
+                        </div>
 
 			<!-- 表格放在这个div里哦~ -->
 			<div id="mytable"></div>
