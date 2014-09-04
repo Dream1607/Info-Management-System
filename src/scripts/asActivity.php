@@ -6,11 +6,7 @@
 	$tpl = new Template('../html');
 	$tpl->set_file('asActivity', 'asActivity.html'); 
 	
-
-	if(isset($_SESSION["info"]))
-	{
-		$tpl->set_var("status","$_SESSION[info]");
-	}
-
+	$tpl->set_var("user","$_SESSION[info]");
+	
 	$tpl->pparse('output', 'asActivity');
 ?>

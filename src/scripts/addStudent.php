@@ -11,7 +11,7 @@
         
 	$tpl->pparse('output', 'addStudent');
         
-        $tpl->set_var('user', $_SESSION['info']);
+    $tpl->set_var('user', $_SESSION['info']);
         
 	if(isset($_POST["submit"]))
 	{

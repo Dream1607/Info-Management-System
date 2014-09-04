@@ -9,10 +9,7 @@
 	include(__DIR__ . '/../lib.php');
 	Config::loadCustom('/etc/Info/config.ini');
 
-	if(isset($_SESSION["info"]))
-	{
-		$tpl->set_var("status","$_SESSION[info]");
-	}
+	$tpl->set_var("user","$_SESSION[info]");
 
 	$tpl->pparse('output', 'asStudent');
 ?>
