@@ -8,12 +8,14 @@ $(document).ready(function(){
 	//log-in move effects
 		$("#login1").click(function(){
 			$("#loginmanager").slideDown();
-			
+			if($("#managerusername").val()!="") $("#formanagerusername").hide();
+			if($("#managerpassword").val()!="") $("#formanagerpassword").hide();			
 		})
 
 		$("#login2").click(function(){
 			$("#loginstudent").slideDown();
-			
+			if($("#studentpassword").val()!="") $("#forstudentpassword").hide();
+			if($("#studentusername").val()!="") $("#forstudentusername").hide();		
 		})
 
 		$("#managercancel").click(function(){
