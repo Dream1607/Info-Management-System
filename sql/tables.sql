@@ -1,10 +1,10 @@
 CREATE TABLE IF NOT EXISTS `Student` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `gender` varchar(255) NOT NULL,
+  `gender` enum('男','女') NOT NULL,
   `major`  varchar(255) NOT NULL,
-  `grade` int(11) NOT NULL,
-  `class` int(11) NOT NULL,
+  `grade` varchar(30) NOT NULL,
+  `class` varchar(30) NOT NULL,
   `status` enum('default','deleted') NOT NULL DEFAULT 'default',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

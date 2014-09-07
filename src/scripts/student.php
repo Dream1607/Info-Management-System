@@ -5,7 +5,7 @@
 	require('../inc/template.inc');
 	$tpl = new Template('../html');
 	$tpl->set_file('global', 'global.html'); 
-	$tpl->set_var("user","$_SESSION[student]");
+	$tpl->set_var("user",$_SESSION['student']);
 
 	$type = $_GET['type'];
 
@@ -28,26 +28,29 @@
 
 	if(isset($_POST['submit']))
 	{
-		include(__DIR__ . '/lib.php');
+		include(__DIR__ . '/../lib.php');
 		Config::loadCustom('/etc/Info/config.ini');
 		
 		$input = array();
-		$input[] = $_POST['number'];
-		$input[] = $_POST['name'];
-		$input[] = $_POST['gender'];
-		$input[] = $_POST['major'];
-		$input[] = $_POST['grade'];
-		$input[] = $_POST['class'];
+		$input['student_id'] = $_POST['number'];
+		$input['student_name'] = $_POST['name'];
+		$input['student_gender'] = $_POST['gender'];
+		$input['student_major'] = $_POST['major'];
+		$input['student_grade'] = $_POST['grade'];
+		$input['student_class'] = $_POST['class'];
 
-		if(validate($input,'student'))
+		if(validate($input))
 		{
 			if($type === 'addStudent')
 			{
-				
+                            if(!insert($input, array('id','name','gender','major','grade','class'), 'Student'))
+                            {
+                                die(0);
+                            }
 			}
 			else
 			{
-				
+                            getDb()->query("UPDATE Student SET status = 'deleted' WHERE id = '$input[student_id]'");
 			}
 		}
 	}

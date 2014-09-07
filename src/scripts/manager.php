@@ -5,7 +5,7 @@
 	require('../inc/template.inc');
 	$tpl = new Template('../html');
 	$tpl->set_file('global', 'global.html'); 
-	$tpl->set_var("user","$_SESSION[info]");
+	$tpl->set_var("user",$_SESSION['info']);
 
 	$type = $_GET['type'];
 	
@@ -25,23 +25,64 @@
 
 	if(isset($_POST['submit']))
 	{
-		include(__DIR__ . '/lib.php');
+		include(__DIR__ . '/../lib.php');
 		Config::loadCustom('/etc/Info/config.ini');
 		
 		$input = array();
-		$input[] = $_POST['username'];
-		$input[] = $_POST['password1'];
-		$input[] = $_POST['password2'];
+		$input['username'] = $_POST['username'];
+		$input['password'] = $_POST['password1'];
+		$input['password'] = $_POST['password2'];
 
-		if(validate($input,'manager'))
+		if(validate($input))
 		{
 			if($type === 'addManager')
 			{
-				
+			    $username = $_POST["username"];
+                            $password1 = md5($_POST["password1"]);
+                            $password2 = md5($_POST["password2"]);
+                            
+                            if($password1 != $password2)
+                            {
+                                echo "<script language=\"JavaScript\">\r\n";
+                                echo "alert(\"密码不一致！\");\r\n";
+                                echo "location='/scripts/addManager.php'";
+                                echo "</script>";
+                            }
+                            $checkUsers = getSql("SELECT * FROM Account");
+                            foreach ($checkUsers as $account)
+                            {
+                                if($username === $account['username'])
+                                {
+                                    echo "<script language=\"JavaScript\">\r\n";
+                                    echo "alert(\"该用户名已存在\");\r\n";
+                                    echo "location='/scripts/addManager.php'";
+                                    echo "</script>";
+                                }
+                            }
+                            $userData = array();
+                            $userData[] = $username;
+                            $userData[] = $password1;
+                            $result = insert($userData, array(	'username',
+                            'password'), 'Account');
+                            echo "<script language=\"JavaScript\">\r\n";
+                            echo " alert(\"添加成功！\");\r\n";
+                            echo "location='/scripts/addManager.php'";
+                            echo "</script>";
 			}
 			else
 			{
-				
+                            $checkUsers = getSql("SELECT * FROM Account WHERE username = '$input[username]'");
+                            if(empty($checkUsers))
+                            {
+                                echo "<script language=\"JavaScript\">\r\n";
+                                echo " alert(\"不存在该管理员账号\");\r\n";
+                                echo "location='/scripts/addManager.php'";
+                                echo "</script>";
+                            }
+                            else
+                            {
+                                getDb()->query("UPDATE Account SET status = 'deleted' WHERE username = '$input[username]'");
+                            }
 			}
 		}
 	}
