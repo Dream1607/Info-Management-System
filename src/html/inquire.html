@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 <head>
-	  <link href="/css/checkList.css" rel="stylesheet" type="text/css">
+  	<link rel="stylesheet" href="/css/inquire.css" type="text/css"/>
 </head>
 
 <body>
-
+        
         <div id="header">
             <img id="titleimage" src="/css/pic/title.png"><img>
             <div id="user">
@@ -56,6 +57,41 @@
                         <option value="研究生会">研究生会</option>
                     </select>
                 </div>
+                {middle}
+                <div>
+                    <input type="text" id="name" name="name" />
+                </div>
+              
+                <div>
+                        <select id="major" name="major" class="select">
+                            <option value="理科试验班">理科试验班</option>
+                            <option value="数学与应用数学">数学与应用数学</option>
+                            <option value="信息资源管理">信息资源管理</option>
+                            <option value="计算机科学与技术">计算机科学与技术</option>
+                            <option value="信息安全">信息安全</option>
+                        </select>
+                </div>
+
+                <div>
+                    <select id="grade" name="grade" class="select">
+                        <option value="1">本科一年级</option>
+                        <option value="2">本科二年级</option>
+                        <option value="3">本科三年级</option>
+                        <option value="4">本科四年级</option>
+                     </select>
+                </div>
+
+                <div>
+                    <select id="class" name="class" class="select">
+                        <option value="1">1班</option>
+                        <option value="2">2班</option>
+                        <option value="3">3班</option>
+                        <option value="4">4班</option>
+                        <option value="5">5班</option>
+                        <option value="6">6班</option>
+                     </select>
+                </div>
+                {end}
                 <input id="confirm" type="submit" name="submit" value="确认" />
             </form>
         </div>  
@@ -63,5 +99,6 @@
         <div id="footer">
             <span>Dream Work, Contact Us! royxue812@gmail.com</span>
         </div>  
+
 </body>
 </html>

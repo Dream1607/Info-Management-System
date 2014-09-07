@@ -1,11 +1,8 @@
 CREATE TABLE IF NOT EXISTS `Student` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `gender` enum('male','female') NOT NULL,
-  `major` enum('Mathematics and Applied Mathematics',
-               'Information Management and Information System',
-               'Computer Science and Technology',
-               'Information Security') NOT NULL,
+  `gender` varchar(255) NOT NULL,
+  `major`  varchar(255) NOT NULL,
   `grade` int(11) NOT NULL,
   `class` int(11) NOT NULL,
   `status` enum('default','deleted') NOT NULL DEFAULT 'default',
@@ -20,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `Activity` (
   `date` date NOT NULL,
   `place` varchar(255) NOT NULL,
   `staff` varchar(255) NOT NULL,
-  `status` enum('default','deleted') NOT NULL DEFAULT 'default',
+  `status` enum('default','closed','deleted') NOT NULL DEFAULT 'default',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

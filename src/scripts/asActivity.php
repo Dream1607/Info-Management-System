@@ -4,9 +4,11 @@
 
 	require('../inc/template.inc');
 	$tpl = new Template('../html');
-	$tpl->set_file('asActivity', 'asActivity.html'); 
+	$tpl->set_file('inquire', 'inquire.html'); 
 	
 	$tpl->set_var("user","$_SESSION[info]");
+	$tpl->set_var('middle',"<!--");
+	$tpl->set_var('end',"-->");
 	
-	$tpl->pparse('output', 'asActivity');
+	$tpl->pparse('output', 'inquire');
 ?>

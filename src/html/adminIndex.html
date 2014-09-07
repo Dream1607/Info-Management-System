@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<head>
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+  	<script src="/js/adminIndex.js"/></script>
+  	<link rel="stylesheet" href="/css/adminIndex.css" type="text/css"/>
+
+</head>
+
+<body>
+		<div id="title">
+			<img id="titleimage" src="/css/pic/title.png"></img>
+			<div id="user">
+				欢迎您，<span>{user}</span>
+				<input id="logout" class="button" type="submit" name="submit" value="注销" onclick="location='/index.php'"/>
+			</div>
+		</div>		 
+
+		<!-- 主界面 -->
+		<div id="main">
+
+			<span id="tip1" class="tip">活动签到情况查询</span>
+			<img src="/css/pic/index1.png" id="asActivity" class="icon"></img>
+
+			<span id="tip2" class="tip">学生参加活动查询</span>
+			<img src="/css/pic/index2.png" id="asStudent" class="icon"></img>
+			{studentstart}
+			<span id="tip3" class="tip">进入签到表</span>
+			<img src="/css/pic/index3.png" id="checkList" class="icon"></img>
+
+			<span id="tip4" class="tip">发起活动</span>
+			<img src="/css/pic/index4.png" id="addActivity" class="icon"></img>
+
+			<span id="tip5" class="tip">关闭活动</span>
+			<img src="/css/pic/index5.png" id="closeActivity" class="icon"></img>
+
+			<span id="tip6" class="tip">删除活动</span>
+			<img src="/css/pic/index6.png" id="deleteActivity" class="icon"></img>
+			{managerstart}
+			<span id="tip7" class="tip">添加学生</span>
+			<img src="/css/pic/index7.png" id="addStudent" class="icon"></img>
+
+			<span id="tip8" class="tip">删除学生</span>
+			<img src="/css/pic/index8.png" id="deleteStudent" class="icon"></img>	
+
+			<span id="tip9" class="tip">添加账户</span>
+			<img src="/css/pic/index9.png" id="addManager" class="icon"></img>
+
+			<span id="tip10" class="tip">删除账户</span>
+			<img src="/css/pic/index10.png" id="deleteManager" class="icon"></img>
+			{end}
+
+		</div>
+		
+		<div id="note">
+			<span id="intro">Dream Work, Contact Us! royxue812@gmail.com</span>
+		</div>	
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<head>
+  	<link rel="stylesheet" href="/css/global.css" type="text/css"/>
+</head>
+
+<body>
+		
+		<div id="header">
+			<img id="titleimage" src="/css/pic/title.png"><img>
+			<div id="user">
+				你好，<span>{user}</span> 
+				<input id="logout" class="button" type="submit" name="submit" value="注销" />
+			</div>
+		</div>			
+
+		<div id="mainBody">
+			<form action="" method="post">
+				{start}
+				<div>
+					<input type="text" id="name" name="name" />
+				</div>
+
+				<div>
+					<select id="type" name="type" class="select" >
+	                    <option value="default">不限制</option>
+	                    <option value="体育竞技类">体育竞技类</option>
+	                    <option value="文化艺术类">文化艺术类</option>
+	                    <option value="科技创新类">科技创新类</option>
+	                    <option value="志愿服务类">志愿服务类</option>
+	                    <option value="知识竞赛类">知识竞赛类</option>
+	                    <option value="娱乐放松类">娱乐放松类</option>
+	                    <option value="学术讲座类">学术讲座类</option>
+	                    <option value="经验交流类">经验交流类</option>
+	                    <option value="社会实践类">社会实践类</option>
+	                </select>
+				</div>
+				
+				<div>
+					<select id="department" name="department" class="select">
+	                   	<option value="default">不限制</option>
+	                   	<option value="体育部">体育部</option>
+	                   	<option value="文化部">文化部</option>
+	                   	<option value="外联部">外联部</option>
+	                   	<option value="实践部">实践部</option>
+	                   	<option value="团宣部">团宣部</option>
+	                   	<option value="团组部">团组部</option>
+	                   	<option value="学习部">学习部</option>
+	                   	<option value="信息宣">信息宣</option>
+	                   	<option value="办公室">办公室</option>
+	                   	<option value="青年志愿者协会">青年志愿者协会</option>
+	                   	<option value="计算机协会">计算机协会</option>
+	                   	<option value="信息月刊">信息月刊</option>
+	                   	<option value="信息学院辩论队">信息学院辩论队</option>
+	                   	<option value="党总支">党总支</option>
+	                   	<option value="研究生会">研究生会</option>
+	                </select>
+				</div>
+
+				<div>
+					<input type="text" id="time" name="time"/>
+				</div>
+
+				<div>
+					<input type="text" id="place" name="place"/>
+				</div>
+
+				<div>
+					<input type="text" id="sponsor" name="sponsor"/>
+				</div>
+				{activitystart}
+				<div>
+                    <input type="text" id="number" name="number" />
+                </div>
+
+				<div>
+					<input type="text" id="name" name="name" />
+				</div>
+				
+				<div>
+                    <select id="gender" name="gender" class="select">
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </div>
+
+				<div>
+                        <select id="major" name="major" class="select">
+                            <option value="理科试验班">理科试验班</option>
+                            <option value="数学与应用数学">数学与应用数学</option>
+                            <option value="信息资源管理">信息资源管理</option>
+                            <option value="计算机科学与技术">计算机科学与技术</option>
+                            <option value="信息安全">信息安全</option>
+                        </select>
+                </div>
+
+                <div>
+                    <select id="grade" name="grade" class="select">
+                        <option value="1">本科一年级</option>
+                        <option value="2">本科二年级</option>
+                        <option value="3">本科三年级</option>
+                        <option value="4">本科四年级</option>
+                     </select>
+                </div>
+
+                <div>
+                    <select id="class" name="class" class="select">
+                        <option value="1">1班</option>
+                        <option value="2">2班</option>
+                        <option value="3">3班</option>
+                        <option value="4">4班</option>
+                        <option value="5">5班</option>
+                        <option value="6">6班</option>
+                     </select>
+                </div>
+				{managerend}
+                <div>
+					<input type="text" id="username" class="username" name="username" />
+				</div>
+
+				<div>
+					<input type="password" id="password1" class="password1" name="password1"/>
+				</div>
+
+				<div>
+					<input type="password" id="password2" class="password2" name="password2"/>
+				</div>
+				{end}
+				<input id="confirm" type="submit" name="submit" value="{operationName}" />
+			</form>
+		</div>	
+
+		<div id="footer">
+			<span>Dream Work, Contact Us! royxue812@gmail.com</span>
+		</div>	
+
+</body>
+</html>

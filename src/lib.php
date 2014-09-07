@@ -263,3 +263,23 @@ function update($updateData, $whereColumn, $setColumn, $table, $db = null)
 
     $stmt->execute($dataToInsert);
 }
+
+function validate($input, $type = '')
+{
+    if($type == 'activity')
+    {
+
+    }
+    else if($type == 'student')
+    {
+
+    }
+    else if($type == 'manager')
+    {
+
+    }
+    else
+    {
+        
+    }
+}
