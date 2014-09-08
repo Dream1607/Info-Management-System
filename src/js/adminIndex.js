@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$("img.icon").click(function(){
+	$(".btn").click(function(){
 		var id = $(this).attr('id')
 		if(id == "asActivity"){
 			window.location.href = "asActivity.php"
