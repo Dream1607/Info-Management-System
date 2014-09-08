@@ -2,6 +2,15 @@
 	header("Content-type: text/html; charset=utf-8");
 	session_start();
 
+    if(!isset($_SESSION['info']))
+    {
+        echo "<script language=\"JavaScript\">\r\n";
+        echo " alert(\"您尚未登陆\");\r\n";
+        echo "location='/index.php'";
+        echo "</script>";
+        exit;
+    }
+
 	require('../inc/template.inc');
 	$tpl = new Template('../html');
 	$tpl->set_file('global', 'global.html'); 
@@ -38,52 +47,66 @@
 			if($type === 'addManager')
 			{
 			    $username = $_POST["username"];
-                            $password1 = md5($_POST["password1"]);
-                            $password2 = md5($_POST["password2"]);
-                            
-                            if($password1 != $password2)
-                            {
-                                echo "<script language=\"JavaScript\">\r\n";
-                                echo "alert(\"密码不一致！\");\r\n";
-                                echo "location='/scripts/addManager.php'";
-                                echo "</script>";
-                            }
-                            $checkUsers = getSql("SELECT * FROM Account");
-                            foreach ($checkUsers as $account)
-                            {
-                                if($username === $account['username'])
-                                {
-                                    echo "<script language=\"JavaScript\">\r\n";
-                                    echo "alert(\"该用户名已存在\");\r\n";
-                                    echo "location='/scripts/addManager.php'";
-                                    echo "</script>";
-                                }
-                            }
-                            $userData = array();
-                            $userData[] = $username;
-                            $userData[] = $password1;
-                            $result = insert($userData, array(	'username',
-                            'password'), 'Account');
-                            echo "<script language=\"JavaScript\">\r\n";
-                            echo " alert(\"添加成功！\");\r\n";
-                            echo "location='/scripts/addManager.php'";
-                            echo "</script>";
+                $password1 = md5($_POST["password1"]);
+                $password2 = md5($_POST["password2"]);
+                
+                if($password1 != $password2)
+                {
+                    echo "<script language=\"JavaScript\">\r\n";
+                    echo "alert(\"密码不一致！\");\r\n";
+                    echo "location='/scripts/manager.php'";
+                    echo "</script>";
+                    exit;
+                }
+                $checkUsers = getSql("SELECT * FROM Account");
+                foreach ($checkUsers as $account)
+                {
+                    if($username === $account['username'])
+                    {
+                        echo "<script language=\"JavaScript\">\r\n";
+                        echo "alert(\"该用户名已存在\");\r\n";
+                        echo "location='/scripts/manager.php'";
+                        echo "</script>";
+                        exit;
+                    }
+                }
+                $userData = array();
+                $userData[] = $username;
+                $userData[] = $password1;
+                $result = insert($userData, array(	'username',
+                'password'), 'Account');
+                echo "<script language=\"JavaScript\">\r\n";
+                echo " alert(\"添加成功！\");\r\n";
+                echo "location='/scripts/manager.php'";
+                echo "</script>";
+                exit;
 			}
 			else
 			{
-                            $checkUsers = getSql("SELECT * FROM Account WHERE username = '$input[username]'");
-                            if(empty($checkUsers))
-                            {
-                                echo "<script language=\"JavaScript\">\r\n";
-                                echo " alert(\"不存在该管理员账号\");\r\n";
-                                echo "location='/scripts/addManager.php'";
-                                echo "</script>";
-                            }
-                            else
-                            {
-                                getDb()->query("UPDATE Account SET status = 'deleted' WHERE username = '$input[username]'");
-                            }
+                $checkUsers = getSql("SELECT * FROM Account WHERE username = '$input[username]'");
+                if(empty($checkUsers))
+                {
+                    echo "<script language=\"JavaScript\">\r\n";
+                    echo " alert(\"不存在该管理员账号\");\r\n";
+                    echo "location='/scripts/manager.php'";
+                    echo "</script>";
+                    exit;
+                }
+                else
+                {
+                    getDb()->query("UPDATE Account SET status = 'deleted' WHERE username = '$input[username]'");
+                    echo "<script language=\"JavaScript\">\r\n";
+                    echo " alert(\"删除成功\");\r\n";
+                    echo "location='/scripts/manager.php'";
+                    echo "</script>";
+                    exit;
+                }
 			}
 		}
+        echo "<script language=\"JavaScript\">\r\n";
+        echo " alert(\"用户名不要有特殊字符哦,请注意密码应在6-16位！\");\r\n";
+        echo "location='/scripts/manager.php'";
+        echo "</script>";
+        exit;
 	}
 ?>

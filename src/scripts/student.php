@@ -2,6 +2,15 @@
 	header("Content-type: text/html; charset=utf-8");
 	session_start();
 
+	if(!isset($_SESSION['student']))
+	{
+		echo "<script language=\"JavaScript\">\r\n";
+        echo " alert(\"您尚未登陆\");\r\n";
+        echo "location='/index.php'";
+        echo "</script>";
+        exit;
+	}
+
 	require('../inc/template.inc');
 	$tpl = new Template('../html');
 	$tpl->set_file('global', 'global.html'); 
@@ -43,15 +52,30 @@
 		{
 			if($type === 'addStudent')
 			{
-                            if(!insert($input, array('id','name','gender','major','grade','class'), 'Student'))
-                            {
-                                die(0);
-                            }
+                if(!insert($input, array('id','name','gender','major','grade','class'), 'Student'))
+                {
+                    die(0);
+                }
+                echo "<script language=\"JavaScript\">\r\n";
+                echo " alert(\"添加成功\");\r\n";
+                echo "location='/scripts/student.php'";
+                echo "</script>";
+                exit;
 			}
 			else
 			{
-                            getDb()->query("UPDATE Student SET status = 'deleted' WHERE id = '$input[student_id]'");
+                getDb()->query("UPDATE Student SET status = 'deleted' WHERE id = '$input[student_id]'");
+                echo "<script language=\"JavaScript\">\r\n";
+                echo " alert(\"删除成功\");\r\n";
+                echo "location='/scripts/student.php'";
+                echo "</script>";
+                exit;
 			}
 		}
+		echo "<script language=\"JavaScript\">\r\n";
+        echo " alert(\"添加失败\");\r\n";
+        echo "location='/scripts/student.php'";
+        echo "</script>";
+        exit;
 	}
 ?>

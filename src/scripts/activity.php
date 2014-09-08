@@ -2,6 +2,15 @@
 	header("Content-type: text/html; charset=utf-8");
 	session_start();
 
+	if(!isset($_SESSION['info']))
+    {
+        echo "<script language=\"JavaScript\">\r\n";
+        echo " alert(\"您尚未登陆\");\r\n";
+        echo "location='/index.php'";
+        echo "</script>";
+        exit;
+    }
+
 	require('../inc/template.inc');
 	$tpl = new Template('../html');
 	$tpl->set_file('global', 'global.html'); 
@@ -46,35 +55,55 @@
 
 		if(validate($input))
 		{
-                    if($type === 'addActivity')
-                    {
-                        if(!insert($input, array('name','type','department','date','place','staff'), 'Activity'))
-                        {
-                            die(0);
-                        }
+            if($type === 'addActivity')
+            {
+                if(!insert($input, array('name','type','department','date','place','staff'), 'Activity'))
+                {
+                    die(0);
+                }
 
-                        $accountId = getOneNumber("SELECT id FROM Account WHERE username = '$_SESSION[info]'");
-                        $activityId = getOneNumber("SELECT id FROM Activity ORDER BY id DESC LIMIT 1");
+                $accountId = getOneNumber("SELECT id FROM Account WHERE username = '$_SESSION[info]'");
+                $activityId = getOneNumber("SELECT id FROM Activity ORDER BY id DESC LIMIT 1");
 
-                        $accountActivityData = array();
-                        $accountActivityData[] = $accountId;
-                        $accountActivityData[] = $activityId;
+                $accountActivityData = array();
+                $accountActivityData[] = $accountId;
+                $accountActivityData[] = $activityId;
 
-                        if(!insert($accountActivityData, array('account_id','activity_id'), 'Account_Activity'))
-                        {
-                            die(0);
-                        }
-                    }
-                    else if($type === 'closeActivity')
-                    {
-                        $activity_id = getOneNumber("SELECT id FROM Activity WHERE name = '$input[activity_name]'");
-                        getDb()->query("UPDATE Activity SET status = 'closed' WHERE id = '$activity_id'");
-                    }
-                    else
-                    {
-                        $activity_id = getOneNumber("SELECT id FROM Activity WHERE name = '$input[activity_name]'");
-                        getDb()->query("UPDATE Activity SET status = 'deleted' WHERE id = '$activity_id'");
-                    }
+                if(!insert($accountActivityData, array('account_id','activity_id'), 'Account_Activity'))
+                {
+                    die(0);
+                }
+                echo "<script language=\"JavaScript\">\r\n";
+                echo " alert(\"添加成功！\");\r\n";
+                echo "location='/scripts/adminIndex.php'";
+                echo "</script>";
+                exit;
+            }
+            else if($type === 'closeActivity')
+            {
+                $activity_id = getOneNumber("SELECT id FROM Activity WHERE name = '$input[activity_name]'");
+                getDb()->query("UPDATE Activity SET status = 'closed' WHERE id = '$activity_id'");
+                echo "<script language=\"JavaScript\">\r\n";
+                echo " alert(\"关闭活动\");\r\n";
+                echo "location='/scripts/adminIndex.php'";
+                echo "</script>";
+                exit;
+            }
+            else
+            {
+                $activity_id = getOneNumber("SELECT id FROM Activity WHERE name = '$input[activity_name]'");
+                getDb()->query("UPDATE Activity SET status = 'deleted' WHERE id = '$activity_id'");
+                echo "<script language=\"JavaScript\">\r\n";
+                echo " alert(\"删除活动\");\r\n";
+                echo "location='/scripts/adminIndex.php'";
+                echo "</script>";
+                exit;
+            }
 		}
+        echo "<script language=\"JavaScript\">\r\n";
+        echo " alert(\"添加失败\");\r\n";
+        echo "location='/scripts/activity.php'";
+        echo "</script>";
+        exit;
 	}
 ?>
