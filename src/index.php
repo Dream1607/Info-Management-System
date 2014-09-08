@@ -9,9 +9,9 @@
     <title>中国人民大学信息学院</title>
     <link href="/bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body style="background:url(/css/pic/background.jpg);background-repeat:no-repeat;">
     <div class="container-fluid" style="width:40%;position:relative;top:60px;">
-      <form class="form-signin" role="form" action="" method="post">
+      <form class="form-signin" role="form" action="" method="post"><br><br>
   	    <h2 class="form-signin-heading">校园活动管理系统<small>     中国人民大学信息学院</small></h2>
   	    <br><br>
   	    <div class="form-group">

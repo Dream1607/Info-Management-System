@@ -6,6 +6,10 @@
     {
         header("Content-type: text/html; charset=utf-8");
         session_start();
+        require('../inc/template.inc');
+        $tpl = new Template('../html'); 
+        $tpl->set_file('display', 'display.html');
+        $tpl->pparse('output', 'display');
             
         if(isset($_GET['activity']))
         {
