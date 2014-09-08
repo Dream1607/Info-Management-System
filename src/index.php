@@ -38,7 +38,6 @@
 	{
 		unset($_SESSION["info"]);
 		unset($_SESSION["student"]);
-		echo "<script>location='/index.php'</script>";
 	}
 
 	if(isset($_POST["submit"]))
