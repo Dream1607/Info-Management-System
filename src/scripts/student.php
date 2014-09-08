@@ -58,7 +58,7 @@
                 }
                 echo "<script language=\"JavaScript\">\r\n";
                 echo " alert(\"添加成功\");\r\n";
-                echo "location='/scripts/student.php'";
+                echo "location.reload()";
                 echo "</script>";
                 exit;
 			}
@@ -67,14 +67,14 @@
                 getDb()->query("UPDATE Student SET status = 'deleted' WHERE id = '$input[student_id]'");
                 echo "<script language=\"JavaScript\">\r\n";
                 echo " alert(\"删除成功\");\r\n";
-                echo "location='/scripts/student.php'";
+                echo "location.reload()";
                 echo "</script>";
                 exit;
 			}
 		}
 		echo "<script language=\"JavaScript\">\r\n";
-        echo " alert(\"添加失败\");\r\n";
-        echo "location='/scripts/student.php'";
+        echo " alert(\"操作失败\");\r\n";
+        echo "location.reload()";
         echo "</script>";
         exit;
 	}

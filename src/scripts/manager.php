@@ -54,7 +54,7 @@
                 {
                     echo "<script language=\"JavaScript\">\r\n";
                     echo "alert(\"密码不一致！\");\r\n";
-                    echo "location='/scripts/manager.php'";
+                    echo "location.reload()";
                     echo "</script>";
                     exit;
                 }
@@ -65,7 +65,7 @@
                     {
                         echo "<script language=\"JavaScript\">\r\n";
                         echo "alert(\"该用户名已存在\");\r\n";
-                        echo "location='/scripts/manager.php'";
+                        echo "location.reload()";
                         echo "</script>";
                         exit;
                     }
@@ -77,7 +77,7 @@
                 'password'), 'Account');
                 echo "<script language=\"JavaScript\">\r\n";
                 echo " alert(\"添加成功！\");\r\n";
-                echo "location='/scripts/manager.php'";
+                echo "location='/scripts/adminIndex.php'";
                 echo "</script>";
                 exit;
 			}
@@ -88,7 +88,7 @@
                 {
                     echo "<script language=\"JavaScript\">\r\n";
                     echo " alert(\"不存在该管理员账号\");\r\n";
-                    echo "location='/scripts/manager.php'";
+                    echo "location.reload()";
                     echo "</script>";
                     exit;
                 }
@@ -97,7 +97,7 @@
                     getDb()->query("UPDATE Account SET status = 'deleted' WHERE username = '$input[username]'");
                     echo "<script language=\"JavaScript\">\r\n";
                     echo " alert(\"删除成功\");\r\n";
-                    echo "location='/scripts/manager.php'";
+                    echo "location='/scripts/adminIndex.php'";
                     echo "</script>";
                     exit;
                 }
@@ -105,7 +105,7 @@
 		}
         echo "<script language=\"JavaScript\">\r\n";
         echo " alert(\"用户名不要有特殊字符哦,请注意密码应在6-16位！\");\r\n";
-        echo "location='/scripts/manager.php'";
+        echo "location.reload()";
         echo "</script>";
         exit;
 	}

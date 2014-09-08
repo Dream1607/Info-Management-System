@@ -18,14 +18,18 @@
                 $student = $_GET['student'];
                 $query = "SELECT Activity.* FROM Activity_Student LEFT JOIN Activity ON Activity.id = Activity_Student.activity_id WHERE Activity_Student.student_id = '$student'";
                 $getActivityData = getSql( $query );
-                
+
+                if(empty($getActivityData))
+                {
+                    exit;
+                }
                 getTable($getActivityData,array(    '活动代号',
                                                     '活动名称',
                                                     '活动类型',
                                                     '活动部门',
                                                     '活动日期',
                                                     '活动地点',
-                                                    '录入人员',
+                                                    '负责人',
                                                     '活动状态'));
             }
             else
@@ -46,7 +50,14 @@
             session_start();
 
             $accountId = getOneNumber("SELECT id FROM Account WHERE username = '$_SESSION[info]'");
-            $activityId = getSql("SELECT activity_id FROM Account_Activity WHERE account_id = '$accountId'");
+            $activityId = getSql(" SELECT 
+                                            activity_id 
+                                    FROM 
+                                            Account_Activity 
+                                    LEFT JOIN Activity  ON Activity.id = Account_Activity.activity_id
+                                    WHERE 
+                                            Activity.status = 'default'
+                                        AND account_id = '$accountId'");
 
             $activityIn = array();
 
@@ -58,7 +69,20 @@
         }
         else
         {
-            $activityIn = "NOT IN ('')";
+            $activityId = getSql(" SELECT 
+                                            Activity.id 
+                                    FROM 
+                                            Activity
+                                    WHERE 
+                                            Activity.status != 'deleted'");
+
+            $activityIn = array();
+
+            foreach ($activityId as $value) 
+            {
+                $activityIn[] = $value["id"]; 
+            }
+            $activityIn = "IN "."('".implode("','", array_unique( $activityIn ) )."')";
         }
 
         if( isset($_GET["name"]) && $_GET['name'] != '')
@@ -184,13 +208,17 @@
             $link[] = "getStudent.php?activity=$value[id]";       
         }
 
+        if(empty($getActivityData))
+        {
+            exit;
+        }
         getTable($getActivityData,array(	'活动代号',
                                             '活动名称',
                                             '活动类型',
                                             '活动部门',
                                             '活动日期',
                                             '活动地点',
-                                            '录入人员',
+                                            '负责人',
                                             '活动状态'),$link);
     }
     

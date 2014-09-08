@@ -18,7 +18,11 @@
                 $activity = $_GET['activity'];
                 $query = "SELECT Student.* FROM Activity_Student LEFT JOIN Student ON Student.id = Activity_Student.student_id WHERE Activity_Student.activity_id = '$activity'";
                 $getStudentData = getSql( $query );
-                
+
+                if(empty($getStudentData))
+                {
+                    exit;
+                }
                 getTable($getStudentData, array('学号',
                                                 '姓名',
                                                 '性别',
@@ -50,6 +54,10 @@
         $query = "SELECT * FROM Student";
         $getStudentData = getSql( $query );
 
+        if(empty($getStudentData))
+        {
+            exit;
+        }
         getTable($getStudentData, array('学号',
                                         '姓名',
                                         '性别',
@@ -186,7 +194,11 @@
         {
             $link[] = "getActivity.php?student=$value[id]";       
         }
-                
+        
+        if(empty($getStudentData))
+        {
+            exit;
+        }
         getTable($getStudentData, array('学号',
                                         '姓名',
                                         '性别',

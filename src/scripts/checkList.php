@@ -4,9 +4,7 @@
 	
 	require('../inc/template.inc');
 	$tpl = new Template('../html');
-	$tpl->set_file('checkList', 'checkList.html'); 
+	$tpl->set_file('checkList', 'checkList.html');
 	
-        $tpl->set_var("user", $_SESSION['info']);
-        
 	$tpl->pparse('output', 'checkList');
 ?>

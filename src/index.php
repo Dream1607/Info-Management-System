@@ -12,14 +12,15 @@
 <body style="background:url(/css/pic/background.jpg);background-repeat:no-repeat;">
     <div class="container-fluid" style="width:40%;position:relative;top:60px;">
       <form class="form-signin" role="form" action="" method="post"><br><br>
-  	    <h2 class="form-signin-heading">校园活动管理系统<small>     中国人民大学信息学院</small></h2>
+  	    <h1 class="form-signin-heading">校园活动管理系统<small><small>Ver_1.0.0_beta</small></small></h1>
+  	    <h2 class="form-signin-heading"><small class="pull-right" style="color:lightgrey;">中国人民大学信息学院</small></h2>
   	    <br><br>
   	    <div class="form-group">
-	      <label>账号</label>
+	      <label style="color:white;">账号</label>
 	      <input type="username" class="form-control" name="username" placeholder="username" required autofocus>
 	    </div>
 	    <div class="form-group">
-	      <label>密码</label>
+	      <label style="color:white;">密码</label>
 	      <input type="password" class="form-control" name="password" placeholder="password" required>
 	    </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit">登陆</button>
@@ -35,11 +36,9 @@
 
 	if(isset($_SERVER['HTTP_REFERER']))
 	{
-		if(strstr($_SERVER['HTTP_REFERER'],"adminIndex"))
-		{
-			unset($_SESSION["info"]);
-			echo "<script>location='/index.php'</script>";
-		}
+		unset($_SESSION["info"]);
+		unset($_SESSION["student"]);
+		echo "<script>location='/index.php'</script>";
 	}
 
 	if(isset($_POST["submit"]))
@@ -55,8 +54,8 @@
 			 {
 			 	if($username === $account['id'] && $password === $account['id'] && $account['status'] === 'default')
 			 	{
-			 		 	$_SESSION['student'] = $username;
-			 		 	echo "<script>location='/scripts/adminIndex.php'</script>";
+		 		 	$_SESSION['student'] = $username;
+		 		 	echo "<script>location='/scripts/adminIndex.php'</script>";
 			 	}
 			 }
 

@@ -84,7 +84,7 @@
                 $activity_id = getOneNumber("SELECT id FROM Activity WHERE name = '$input[activity_name]'");
                 getDb()->query("UPDATE Activity SET status = 'closed' WHERE id = '$activity_id'");
                 echo "<script language=\"JavaScript\">\r\n";
-                echo " alert(\"关闭活动\");\r\n";
+                echo " alert(\"关闭成功\");\r\n";
                 echo "location='/scripts/adminIndex.php'";
                 echo "</script>";
                 exit;
@@ -94,15 +94,15 @@
                 $activity_id = getOneNumber("SELECT id FROM Activity WHERE name = '$input[activity_name]'");
                 getDb()->query("UPDATE Activity SET status = 'deleted' WHERE id = '$activity_id'");
                 echo "<script language=\"JavaScript\">\r\n";
-                echo " alert(\"删除活动\");\r\n";
+                echo " alert(\"删除成功\");\r\n";
                 echo "location='/scripts/adminIndex.php'";
                 echo "</script>";
                 exit;
             }
 		}
         echo "<script language=\"JavaScript\">\r\n";
-        echo " alert(\"添加失败\");\r\n";
-        echo "location='/scripts/activity.php'";
+        echo " alert(\"操作失败\");\r\n";
+        echo "location.reload()";
         echo "</script>";
         exit;
 	}

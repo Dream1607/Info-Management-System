@@ -13,7 +13,6 @@ function showStudent(blur)
     name = document.getElementById("name").value
     url=url+"?grade="+grade+"&class="+_class+"&name="+name
     url=url+"&sid="+Math.random()
-    
     if(!blur)
     {
         url=url+"&blur=false"
@@ -53,7 +52,7 @@ $(document).ready(function(){
         });
     });
     
-    $(".select").change(function(){
+    $("select").change(function(){
         url=showStudent(true);
         $("#table").load(url);
     });
