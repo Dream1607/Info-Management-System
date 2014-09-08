@@ -271,11 +271,6 @@ function update($updateData, $whereColumn, $setColumn, $table, $db = null)
     $stmt->execute($dataToInsert);
 }
 
-function alert( $msg )
-{
-    echo '<script> alert ("'.$msg.'") </script>';
-}
-
 function checkEle($ele,$array)
 {
     foreach($array as $element)
@@ -311,7 +306,7 @@ function validate($input, $type = '')
         $input = preg_replace('/\s(?=\s)/','',$input);
         if($input == '')
         {
-            alert("无效空白！");
+            return false;
         }
 
         $gender = array('男','女');
@@ -332,7 +327,7 @@ function validate($input, $type = '')
             }
             else
             {
-                alert("请输入正确的学号！");
+                return false;
             }
         }
         if($type == 'student_name')
@@ -343,7 +338,7 @@ function validate($input, $type = '')
             }
             else
             {
-                alert("请输入正确的学生姓名！");
+                return false;   
             }
         }
         if($type == 'student_gender')
@@ -354,7 +349,7 @@ function validate($input, $type = '')
             }
             else
             {
-                alert("请输入正确的学生性别！");
+                return false;
             }
         }
         if($type == 'student_major')
@@ -365,7 +360,7 @@ function validate($input, $type = '')
             }
             else
             {
-                alert("请输入正确的学生专业！");
+                return false;
             }
         }
         if($type == 'student_grade')
@@ -376,7 +371,7 @@ function validate($input, $type = '')
             }
             else
             {
-                alert("请输入正确的年级！");
+                return false;
             }
         }
         if($type == 'student_class')
@@ -387,7 +382,7 @@ function validate($input, $type = '')
             }
             else
             {
-                alert("请输入正确的班级！");
+                return false;
             }
         }
         //activity
@@ -399,7 +394,7 @@ function validate($input, $type = '')
             }
             else
             {
-                alert("请输入合法的活动名称！");
+                return false;
             }
         }
         if($type == 'activity_type')
@@ -410,7 +405,7 @@ function validate($input, $type = '')
             }
             else
             {
-                alert("请选择正确的活动类型！");
+                return false;
             }
         }
         if($type == 'activity_department')
@@ -421,7 +416,7 @@ function validate($input, $type = '')
             }
             else
             {
-                alert("请选择正确的活动部门！");
+                return false;
             }
         }
         if($type == 'activity_date')
@@ -432,7 +427,7 @@ function validate($input, $type = '')
             }
             else
             {
-                alert("请输入合法的活动日期！");
+                return false;
             }
         }
         if($type == 'activity_place')
@@ -443,7 +438,7 @@ function validate($input, $type = '')
             }
             else
             {
-                alert("请输入合法的活动地点！");
+                return false;
             }
         }
         if($type == 'activity_sponsor')
@@ -454,7 +449,7 @@ function validate($input, $type = '')
             }
             else
             {
-                alert("请输入正确的负责人！");
+                return false;
             }
         }
         if($type == 'username')
@@ -465,7 +460,7 @@ function validate($input, $type = '')
             }
             else
             {
-                alert("请输入合法的管理者用户名！");
+                return false;
             }
         }
         if($type == 'password')
@@ -476,7 +471,7 @@ function validate($input, $type = '')
             }
             else
             {
-                alert("密码格式不合法！");
+                return false;
             }
         }
         return false;
