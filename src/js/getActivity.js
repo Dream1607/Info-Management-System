@@ -16,7 +16,7 @@ function showActivity(blur)
 
 $(document).ready(function(){
     $("#table").load("getActivity.php");
-    $(".select").change(function(){
+    $("select.form-control").change(function(){
         url=showActivity(true);
         $("#table").load(url);
     });

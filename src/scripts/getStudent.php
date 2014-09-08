@@ -21,7 +21,7 @@
                                                 '专业',
                                                 '年级',
                                                 '班级',
-                                                '状态'), "border='1' align='center' width='888'");
+                                                '状态'));
             }
             else
             {
@@ -38,10 +38,11 @@
     {
         header("Content-type: text/html; charset=utf-8");
         session_start();
+        require('../inc/template.inc');
+        $tpl = new Template('../html'); 
+        $tpl->set_file('display', 'display.html');
+        $tpl->pparse('output', 'display');
 
-        //你做完这个的html后得把这块改了
-        echo '<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.js"></script><script src="/js/getStudent.js"></script>';
-        
         $query = "SELECT * FROM Student";
         $getStudentData = getSql( $query );
 
@@ -51,8 +52,9 @@
                                         '专业',
                                         '年级',
                                         '班级',
-                                        '状态'),"border='1' align='center' width='888'", NULL, 
+                                        '状态'), NULL, 
                                     "<td><input type='checkbox'/></td>");
+        
     } 
     else
     {
@@ -187,6 +189,6 @@
                                         '专业',
                                         '年级',
                                         '班级',
-                                        '状态'), "border='1' align='center' width='888'",$link);
+                                        '状态'),$link);
     }
 ?>

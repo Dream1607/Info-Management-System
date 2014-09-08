@@ -1,68 +1,80 @@
 <!DOCTYPE html>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html lang="zh-CN">
 <head>
-	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.js"></script>
-        <script src="/js/getActivity.js"/></script>
-        <link href="/css/checkList.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>中国人民大学信息学院</title>
+    <link href="/bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.js"></script>
+    <script src="/js/getActivity.js"/></script>
 </head>
-
 <body>
+    <div class="navbar navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <img src="/css/pic/title.png" class="img-responsive" alt="Responsive image">
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav pull-right">
+            <li><a href="/index.php"><h4>Logout</h4></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-        <div id="header">
-            <img id="titleimage" src="/css/pic/title.png"><img>
-            <div id="user">
-                你好，<span>{user}</span> 
-                <input id="logout" class="button" type="submit" name="submit" value="注销" />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <input type="text" id="name" name="name" class="form-control" placeholder="输入活动名称"/>
             </div>
-        </div>          
+            <div class="col-md-3">
+                <select id="type" name="type" class="form-control" >
+                    <option value="default">选择活动类型</option>
+                    <option value="体育竞技类">体育竞技类</option>
+                    <option value="文化艺术类">文化艺术类</option>
+                    <option value="科技创新类">科技创新类</option>
+                    <option value="志愿服务类">志愿服务类</option>
+                    <option value="知识竞赛类">知识竞赛类</option>
+                    <option value="娱乐放松类">娱乐放松类</option>
+                    <option value="学术讲座类">学术讲座类</option>
+                    <option value="经验交流类">经验交流类</option>
+                    <option value="社会实践类">社会实践类</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select id="department" name="department" class="form-control">
+                    <option value="default">选择主办部门</option>
+                    <option value="体育部">体育部</option>
+                    <option value="文化部">文化部</option>
+                    <option value="外联部">外联部</option>
+                    <option value="实践部">实践部</option>
+                    <option value="团宣部">团宣部</option>
+                    <option value="团组部">团组部</option>
+                    <option value="学习部">学习部</option>
+                    <option value="信息宣">信息宣</option>
+                    <option value="办公室">办公室</option>
+                    <option value="青年志愿者协会">青年志愿者协会</option>
+                    <option value="计算机协会">计算机协会</option>
+                    <option value="信息月刊">信息月刊</option>
+                    <option value="信息学院辩论队">信息学院辩论队</option>
+                    <option value="党总支">党总支</option>
+                    <option value="研究生会">研究生会</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <input id="confirm" type="submit" name="submit" value="确认" class="form-control"/>
+            </div>
+        <div>
+    </div>
+    <br><br><br>
 
-        <div id="mainBody">
-                {begin}
-                <div>
-                    <input type="text" id="name" name="name" />
-                </div>
+    <div id="table"></div>
 
-                <div>
-                    <select id="type" name="type" class="select" >
-                        <option value="default">不限制</option>
-                        <option value="体育竞技类">体育竞技类</option>
-                        <option value="文化艺术类">文化艺术类</option>
-                        <option value="科技创新类">科技创新类</option>
-                        <option value="志愿服务类">志愿服务类</option>
-                        <option value="知识竞赛类">知识竞赛类</option>
-                        <option value="娱乐放松类">娱乐放松类</option>
-                        <option value="学术讲座类">学术讲座类</option>
-                        <option value="经验交流类">经验交流类</option>
-                        <option value="社会实践类">社会实践类</option>
-                    </select>
-                </div>
-                
-                <div>
-                    <select id="department" name="department" class="select">
-                        <option value="default">不限制</option>
-                        <option value="体育部">体育部</option>
-                        <option value="文化部">文化部</option>
-                        <option value="外联部">外联部</option>
-                        <option value="实践部">实践部</option>
-                        <option value="团宣部">团宣部</option>
-                        <option value="团组部">团组部</option>
-                        <option value="学习部">学习部</option>
-                        <option value="信息宣">信息宣</option>
-                        <option value="办公室">办公室</option>
-                        <option value="青年志愿者协会">青年志愿者协会</option>
-                        <option value="计算机协会">计算机协会</option>
-                        <option value="信息月刊">信息月刊</option>
-                        <option value="信息学院辩论队">信息学院辩论队</option>
-                        <option value="党总支">党总支</option>
-                        <option value="研究生会">研究生会</option>
-                    </select>
-                </div>
-                <input id="confirm" type="submit" name="submit" value="确认" />
-        </div>  
-
-        <div id="table"></div>
-        <div id="footer">
-            <span>Dream Work, Contact Us! Qiaoxuan Shi Sha Bi</span>
-        </div>  
+    <div class="navbar-fixed-bottom">
+        <p class="pull-right">&copy; Info DreamTeam 2014</p>
+    </div>  
 </body>
 </html>

@@ -138,7 +138,7 @@ function getSql( $sql = '', $db = null)
     return $data;
 }
 
-function getTable($tableData, $columnsName, $style = "", $links = NULL, $additiveEle = "")
+function getTable($tableData, $columnsName, $links = NULL, $additiveEle = "")
 {
 	if(empty($tableData))
 	{
@@ -155,7 +155,7 @@ function getTable($tableData, $columnsName, $style = "", $links = NULL, $additiv
 	
 	$rowstart = '<tr>'; $rowend = '</tr>';
 	$elestart = '<td>'; $eleend = '</td>';
-	echo '<table '.$style.'>'.'<thead>';
+	echo '<table '.'class="table table-striped table-bordered table-hover"'.'>'.'<thead>';
 	foreach($columnsName AS $name)
 	{
 		echo '<th scope="col">'.$name.'</th>';
