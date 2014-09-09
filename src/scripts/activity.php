@@ -13,8 +13,7 @@
 
 	require('../inc/template.inc');
 	$tpl = new Template('../html');
-	$tpl->set_file('global', 'global.html'); 
-	$tpl->set_var("user","$_SESSION[info]");
+	$tpl->set_file('global', 'global.html');
 
 	$type = $_GET['type'];
 

@@ -2,7 +2,7 @@
 	header("Content-type: text/html; charset=utf-8");
 	session_start();
 
-	if(!isset($_SESSION['student']))
+	if(!isset($_SESSION['info']))
 	{
 		echo "<script language=\"JavaScript\">\r\n";
         echo " alert(\"您尚未登陆\");\r\n";
@@ -13,8 +13,7 @@
 
 	require('../inc/template.inc');
 	$tpl = new Template('../html');
-	$tpl->set_file('global', 'global.html'); 
-	$tpl->set_var("user",$_SESSION['student']);
+	$tpl->set_file('global', 'global.html');
 
 	$type = $_GET['type'];
 
