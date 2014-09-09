@@ -16,6 +16,8 @@ define('TYPE',   'TYPE');
 
 define('DB_MAIN',   'DB_MAIN');
 
+date_default_timezone_set(’UTC’);
+
 class Config
 {
     private static $configs = array( );
