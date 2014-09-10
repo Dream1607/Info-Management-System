@@ -22,36 +22,7 @@ function showStudent(blur)
 
 $(document).ready(function(){
     $("#table").load("getStudent.php");
-    
-    $("tbody").find("tr").each(function(){
-        var row = $(this)
-        student = $(this).children('td').eq(0).text()
-        activity = getUrlParam('activity')
-        $.post("postCheckList.php",
-        {
-          student: student,
-          activity: activity
-        },
-        function(data){
-            if(data == 1)
-            {
-                row.children('td').children('input').attr("checked",'true')
-            }
-        });
-    });
-    
-    $(":checkbox").click(function(){
-        status = $(this).is(':checked')
-        student = $(this).parent('td').parent('tr').children('td').eq(0).text();
-        activity = getUrlParam('activity')
-        $.post("postCheckList.php",
-        {
-          student: student,
-          activity: activity,
-          status: status
-        });
-    });
-    
+  
     $("select").change(function(){
         url=showStudent(true);
         $("#table").load(url);

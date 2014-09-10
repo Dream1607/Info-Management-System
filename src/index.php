@@ -55,6 +55,7 @@
 			 	{
 		 		 	$_SESSION['student'] = $username;
 		 		 	echo "<script>location='/scripts/adminIndex.php'</script>";
+		 		 	exit;
 			 	}
 			 }
 
@@ -76,6 +77,7 @@
 			 	{
 			 		 $_SESSION['info'] = $username;
 			 		 echo "<script>location='/scripts/adminIndex.php'</script>";
+			 		 exit;
 			 	}
 			 }
 

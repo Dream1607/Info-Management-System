@@ -16,7 +16,14 @@
             if(validate($_GET['student'], 'student_id'))
             {
                 $student = $_GET['student'];
-                $query = "SELECT Activity.* FROM Activity_Student LEFT JOIN Activity ON Activity.id = Activity_Student.activity_id WHERE Activity_Student.student_id = '$student'";
+                $query = "SELECT 
+                                Activity.* 
+                            FROM 
+                                Activity_Student 
+                            LEFT JOIN Activity ON Activity.id = Activity_Student.activity_id 
+                            WHERE 
+                                Activity_Student.status != 'deleted'
+                            AND Activity_Student.student_id = '$student'";
                 $getActivityData = getSql( $query );
 
                 if(empty($getActivityData))

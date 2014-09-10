@@ -16,7 +16,14 @@
             if(is_numeric($_GET['activity']))
             {
                 $activity = $_GET['activity'];
-                $query = "SELECT Student.* FROM Activity_Student LEFT JOIN Student ON Student.id = Activity_Student.student_id WHERE Activity_Student.activity_id = '$activity'";
+                $query = "SELECT 
+                                Student.* 
+                            FROM 
+                                Activity_Student 
+                            LEFT JOIN Student ON Student.id = Activity_Student.student_id 
+                            WHERE 
+                                Activity_Student.status != 'deleted'
+                            AND Activity_Student.activity_id = '$activity'";
                 $getStudentData = getSql( $query );
 
                 if(empty($getStudentData))
@@ -48,25 +55,8 @@
         session_start();
         require('../inc/template.inc');
         $tpl = new Template('../html'); 
-        $tpl->set_file('display', 'display.html');
-        $tpl->pparse('output', 'display');
-
-        $query = "SELECT * FROM Student";
-        $getStudentData = getSql( $query );
-
-        if(empty($getStudentData))
-        {
-            exit;
-        }
-        getTable($getStudentData, array('学号',
-                                        '姓名',
-                                        '性别',
-                                        '专业',
-                                        '年级',
-                                        '班级',
-                                        '状态'), NULL, 
-                                    "<td><input type='checkbox'/></td>");
-        
+        $tpl->set_file('checkListGetStudent', 'checkListGetStudent.html');
+        $tpl->pparse('output', 'checkListGetStudent');
     } 
     else
     {
