@@ -40,6 +40,16 @@
 		unset($_SESSION["student"]);
 	}
 
+	$query = "UPDATE 
+					Activity 
+				SET 
+					status = 'closed' 
+				WHERE 
+					Activity.date < current_date
+                 OR Activity.date > DATE_ADD( current_date, INTERVAL + 1 DAY)";
+
+    getDB() -> query($query);
+    
 	if(isset($_POST["submit"]))
 	{
 		if(is_numeric($_POST["username"]))

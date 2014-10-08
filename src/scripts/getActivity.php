@@ -64,7 +64,9 @@
                                     LEFT JOIN Activity  ON Activity.id = Account_Activity.activity_id
                                     WHERE 
                                             Activity.status = 'default'
-                                        AND account_id = '$accountId'");
+                                        AND account_id = '$accountId'
+                                        AND Activity.date >= current_date
+                                        AND Activity.date <= DATE_ADD( current_date, INTERVAL + 1 DAY) ");
 
             $activityIn = array();
 
