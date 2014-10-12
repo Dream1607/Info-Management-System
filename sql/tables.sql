@@ -43,3 +43,9 @@ CREATE TABLE IF NOT EXISTS `Account_Activity` (
   `status` enum('default','deleted') NOT NULL DEFAULT 'default',
   PRIMARY KEY (`account_id`,`activity_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `Volume` (
+  `date_time` date NOT NULL,
+  `total` int(11) NOT NULL,
+  PRIMARY KEY (`date_time`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

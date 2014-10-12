@@ -49,6 +49,21 @@
                  OR Activity.date > DATE_ADD( current_date, INTERVAL + 1 DAY)";
 
     getDB() -> query($query);
+
+    $query = "SELECT date_time FROM Volume ORDER BY date_time DESC LIMIT 1";
+
+    $date = DATE('Y-m-d');
+    
+	if($date != getOneNumber( $query ))
+	{
+		$query = "INSERT INTO Volume VALUES ('$date','0')";
+		getDB() -> query($query);
+	}
+	else
+	{
+		$query = "UPDATE Volume SET total = total + 1 WHERE date_time = current_date ";
+    	getDB() -> query($query);
+	}
     
 	if(isset($_POST["submit"]))
 	{
