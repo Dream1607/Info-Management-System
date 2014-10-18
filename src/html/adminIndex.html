@@ -27,8 +27,15 @@
 
 	<div class="container">
 	    <div class="jumbotron">
-		    <h1 class="glyphicon glyphicon-user"><strong style="font-family: Courier;">{user},你好!</strong></h1><br><br>
-		    <p>信息学院拥有众多的学生组织和丰富的课余活动，为了更好地服务和管理学生活动，我们设计了这个简单，实用的系统，欢迎您随时提出宝贵意见，我们将会努力改进!</p>
+	    	<div class="row">
+		        <div class="col-lg-7">
+				    <h2 class="glyphicon glyphicon-user"><strong style="font-family: Courier;">{user},你好!</strong></h2><br><br>
+				    <p>信息学院拥有众多的学生组织和丰富的课余活动，为了更好地服务和管理学生活动，我们设计了这个简单，实用的系统。本系统所得统计数据将作为个人，集体评优的依据，欢迎您随时提出宝贵意见，我们将会努力改进!</p>
+				</div>
+				<div class="col-lg-5">
+					<div style=" overflow:scroll;height:220px;overflow:auto;">{Activity}</div>
+				</div>
+			</div>
 		</div>
 
 		<div>
@@ -47,35 +54,25 @@
 	        </div>
 			{studentend}
 			<div class="row">
-				<div class="col-lg-2">
+				<div class="col-lg-3">
 		          <h2>查询活动</h2>
 		          <p style="font-size:16px;">选择活动你将看到参加此项活动的所有同学</p>
 		          <p><a class="btn btn-primary btn-lg" role="button" id="asActivity">进入查询界面 &raquo;</a></p>
 		        </div>
-		        <div class="col-lg-2">
+		        <div class="col-lg-3">
 		          <h2>查询学生</h2>
 		          <p style="font-size:16px;">选择学生你将看到该学生参加的所有活动</p>
 		          <p><a class="btn btn-primary btn-lg" role="button" id="asStudent">进入查询界面 &raquo;</a></p>
 		        </div>
-		        <div class="col-lg-2">
-		          <h2>进入签到表</h2>
-		          <p style="font-size:16px;">为本管理员账号发起的活动进行签到操作</p>
-		          <p><a class="btn btn-info btn-lg" role="button" id="checkList">进入签到界面 &raquo;</a></p>
-		        </div>
-		        <div class="col-lg-2">
+		        <div class="col-lg-3">
 		          <h2>发起活动</h2>
 		          <p style="font-size:16px;">发起一项活动，并拥有此活动的所有权</p>
 		          <p><a class="btn btn-success btn-lg" role="button" id="addActivity">进入添加界面 &raquo;</a></p>
 		        </div>
-		        <div class="col-lg-2">
-		          <h2>关闭活动</h2>
-		          <p style="font-size:16px;">关闭一项本管理员账号发起的活动</p>
-		          <p><a class="btn btn-warning btn-lg" role="button" id="closeActivity">进入关闭界面 &raquo;</a></p>
-		        </div>
-		        <div class="col-lg-2">
-		          <h2>删除活动</h2>
-		          <p style="font-size:16px;">删除一项本管理员账号发起的活动</p>
-		          <p><a class="btn btn-danger btn-lg" role="button" id="deleteActivity">进入删除界面 &raquo;</a></p>
+		        <div class="col-lg-3">
+		          <h2>进入签到表</h2>
+		          <p style="font-size:16px;">为本管理员账号发起的活动进行签到操作</p>
+		          <p><a class="btn btn-info btn-lg" role="button" id="checkList">进入签到界面 &raquo;</a></p>
 		        </div>
 			<div>
 			{managerbegin}
