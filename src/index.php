@@ -45,8 +45,8 @@
 				SET 
 					status = 'closed' 
 				WHERE 
-					Activity.date < current_date
-                 OR Activity.date > DATE_ADD( current_date, INTERVAL + 1 DAY)";
+					current_date < Activity.date
+                 OR current_date > DATE_ADD( Activity.date, INTERVAL + 1 DAY)";
 
     getDB() -> query($query);
 
@@ -55,8 +55,8 @@
 				SET 
 					status = 'default' 
 				WHERE 
-					Activity.date >= current_date
-                AND Activity.date <= DATE_ADD( current_date, INTERVAL + 1 DAY)";
+					current_date >= Activity.date
+                AND current_date <= DATE_ADD( Activity.date, INTERVAL + 1 DAY)";
 
     getDB() -> query($query);
 
