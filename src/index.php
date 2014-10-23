@@ -50,6 +50,16 @@
 
     getDB() -> query($query);
 
+    $query = "UPDATE 
+					Activity 
+				SET 
+					status = 'default' 
+				WHERE 
+					Activity.date >= current_date
+                AND Activity.date <= DATE_ADD( current_date, INTERVAL + 1 DAY)";
+
+    getDB() -> query($query);
+
     $query = "SELECT date_time FROM Volume ORDER BY date_time DESC LIMIT 1";
 
     $date = DATE('Y-m-d');

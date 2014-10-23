@@ -17,7 +17,7 @@
             {
                 $student = $_GET['student'];
                 $query = "SELECT 
-                                Activity.* 
+                                Activity.*
                             FROM 
                                 Activity_Student 
                             LEFT JOIN Activity ON Activity.id = Activity_Student.activity_id 
@@ -144,21 +144,23 @@
 
         if( isset($_GET['blur']) && $_GET['blur']=='false' )
         {
-            $query = "SELECT
-                            *
-                      FROM 
+            $query = "  SELECT
+                                *
+                          FROM 
                                 Activity
-                      WHERE
-                            IF ('$type' = '', 0 = 0, type = '$type')
-                        AND IF ('$department' = '', 0 = 0, department = '$department')
-                        AND IF ('$name' = '', 0 = 0, name = '$name')
-                        AND id $activityIn";
+                          WHERE
+                                IF ('$type' = '', 0 = 0, type = '$type')
+                            AND IF ('$department' = '', 0 = 0, department = '$department')
+                            AND IF ('$name' = '', 0 = 0, name = '$name')
+                            AND id $activityIn
+                          ORDER BY
+                                date";
         }
         else
         {
             if( ($type=='' && $department=='' && $name=='') )
             {
-                $query = "SELECT * FROM Activity WHERE id $activityIn";
+                $query = "SELECT * FROM Activity WHERE id $activityIn ORDER BY date";
             } 
             else if( $name != '' ) 
             {    
@@ -166,22 +168,22 @@
                 {
                     if( $department != '' )
                     {        
-                        $query = "SELECT * FROM Activity WHERE id $activityIn AND type = '$type' AND department = '$department' AND name LIKE '%$name%'";
+                        $query = "SELECT * FROM Activity WHERE id $activityIn AND type = '$type' AND department = '$department' AND name LIKE '%$name%' ORDER BY date";
                     } 
                     else 
                     {
-                        $query = "SELECT * FROM Activity WHERE id $activityIn AND type = '$type' AND name LIKE '%$name%'";
+                        $query = "SELECT * FROM Activity WHERE id $activityIn AND type = '$type' AND name LIKE '%$name%' ORDER BY date";
                     }
                 } 
                 else 
                 {
                     if( $department != '' )
                     {
-                        $query = "SELECT * FROM Activity WHERE id $activityIn AND department = '$department' AND name LIKE '%$name%'";
+                        $query = "SELECT * FROM Activity WHERE id $activityIn AND department = '$department' AND name LIKE '%$name%' ORDER BY date";
                     } 
                     else 
                     {
-                        $query = "SELECT * FROM Activity WHERE id $activityIn AND name LIKE '%$name%'";
+                        $query = "SELECT * FROM Activity WHERE id $activityIn AND name LIKE '%$name%' ORDER BY date";
                     }
                 }
 
@@ -192,18 +194,18 @@
                 {
                     if( $department != '' )
                     {
-                        $query = "SELECT * FROM Activity WHERE id $activityIn AND type = '$type' AND department = '$department'";
+                        $query = "SELECT * FROM Activity WHERE id $activityIn AND type = '$type' AND department = '$department' ORDER BY date";
                     } 
                     else 
                     {
-                        $query = "SELECT * FROM Activity WHERE id $activityIn AND type = '$type'";
+                        $query = "SELECT * FROM Activity WHERE id $activityIn AND type = '$type' ORDER BY date";
                     }
                 } 
                 else 
                 {
                     if( $department != '' )
                     {
-                        $query = "SELECT * FROM Activity WHERE id $activityIn AND department = '$department'";
+                        $query = "SELECT * FROM Activity WHERE id $activityIn AND department = '$department' ORDER BY date";
                     }
                 }
             }
@@ -216,13 +218,17 @@
         {
             $link[] = "getStudent.php?activity=$value[id]";       
         }
+        
+        for($i = 0; $i < count($getActivityData); $i++) 
+        {
+            array_splice($getActivityData[$i],0,1);
+        }
 
         if(empty($getActivityData))
         {
             exit;
         }
-        getTable($getActivityData,array(	'活动代号',
-                                            '活动名称',
+        getTable($getActivityData,array(    '活动名称',
                                             '活动类型',
                                             '活动部门',
                                             '活动日期',
