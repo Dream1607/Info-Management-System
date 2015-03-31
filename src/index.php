@@ -47,7 +47,7 @@
 				WHERE 
 					current_date < Activity.date
                  OR current_date > DATE_ADD( Activity.date, INTERVAL + 1 DAY)
-                 AND status != 'deleted'";
+		 AND status != 'deleted'";
 
     getDB() -> query($query);
 
@@ -58,7 +58,7 @@
 				WHERE 
 					current_date >= Activity.date
                 AND current_date <= DATE_ADD( Activity.date, INTERVAL + 1 DAY)
-                AND status != 'deleted'";
+		AND status != 'deleted'";
 
     getDB() -> query($query);
 
@@ -106,7 +106,7 @@
 			 $username = $_POST["username"];
 			 $password = md5($_POST["password"]);
 
-			 $checkUsers = getSql("SELECT * FROM Account WHERE status != 'deleted'");
+			 $checkUsers = getSql("SELECT * FROM Account");
 
 			 foreach ($checkUsers as $account) 
 			 {

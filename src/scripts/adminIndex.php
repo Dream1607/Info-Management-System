@@ -67,7 +67,7 @@
 						Account ON Account.id = Account_Activity.account_id
 					WHERE 
 						Account.username = '$_SESSION[info]'
-					AND Activity.status != 'deleted'
+					    AND Activity.status != 'deleted'
 					ORDER BY 
 						Activity.date";
 			$getActivityData = getSql( $query );
@@ -136,8 +136,8 @@
 						Activity_Student ON Activity.id = Activity_Student.activity_id
 					WHERE 
 						Activity_Student.student_id = '$_SESSION[student]'
-					AND Activity.status != 'deleted'
-					AND Activity_Student.status != 'deleted'
+					    AND Activity.status != 'deleted'
+					    AND Activity_Student.status != 'deleted'
 					ORDER BY 
 						Activity.date";
 		$getActivityData = getSql( $query );
