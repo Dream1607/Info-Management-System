@@ -9,7 +9,7 @@ DB_MAIN[PORT] = 3306
 
 DB_MAIN[NAME] = Student_db
 
-DB_MAIN[USER] = users
+DB_MAIN[USER] = root
 
 DB_MAIN[PASS] = 
 
